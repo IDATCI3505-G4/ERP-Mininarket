@@ -1,4 +1,65 @@
 // ====================================================================================
+// METODO PARA VER EL DETALLE DEL PRODUCTO
+// ====================================================================================
+$(document).on("click", ".verProducto", function(e) {
+	var codProducto = $(this).attr('href');
+	console.log("idProducto="+codProducto);
+
+	waitingDialog.show('Buscando al Producto', {dialogSize: 'sm', progressType: 'warning'});
+	jQuery.ajax({
+		url: 'index.php?r=almacen/AjaxObtenerProducto',
+		type: "POST",
+		data : {idProducto: codProducto},
+		success: function(resp){
+			data = resp.output;
+			bootbox.dialog({
+			title: "Visualizando detalles del Producto",
+		    message: '<div class="row">  ' +
+		             '<div class="col-md-12"> ' +
+		             '<form class="form-horizontal"> ' +
+
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">Descripción:</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.Descripcion+'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">Proveedor:</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.idProveedor+'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">precioCompra:</label> ' +
+		             '<div class="col-md-7"><span class="help-block"> S/. '+data.precioCompra+'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">precioVenta:</label> ' +
+		             '<div class="col-md-7"><span class="help-block"> S/. '+data.precioVenta+'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">fechaVencimiento :</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.fechaVencimiento +'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">stock:</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.stock+'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">stado:</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.stado+'</span></div> ' +
+		             '</div> ' +
+
+		             '</form>'+
+
+
+		             ' </div>  </div>'
+		});
+		}
+	}).done(function(ev){
+		waitingDialog.hide();
+	});
+	
+	e.preventDefault();
+});
+// ====================================================================================
 // METODO PARA VER EL DETALLE DE UNA PERSONA
 // ====================================================================================
 $(document).on("click", ".verMas", function(e) {
