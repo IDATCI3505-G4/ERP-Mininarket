@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
     	<h3 class='box-title'><i class="fa fa-users"></i> Listado de Clientes</h3>
     </div>
     <div class='box-body'>
-      <button type="button" class="btn btn-default" id="AgregarProveedor"> <i class="fa fa-plus "></i> Agregar Clientes</button>
+      <button type="button" class="btn btn-default" id="AgregarCliente"> <i class="fa fa-plus "></i> Agregar Clientes</button>
     	<?php
                   $this->widget('zii.widgets.grid.CGridView', array(
                     'id'=>'tablareporte',
