@@ -18,7 +18,6 @@ direccion varchar(150),
 telefono char(9),
 email varchar(30),
 fechaInsc datetime,
-stado
 );
 
 create table Proveedor(
