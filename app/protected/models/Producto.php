@@ -39,9 +39,9 @@ class Producto extends CActiveRecord
 public function obtenerProductoxId($idProducto){
 		
 		
-		$sql = "SELECT idProducto,prov.idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,
+		$sql = "SELECT idProducto,idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,
  IF(stado = 'V', 'Vigente','Caducado') AS stado
-FROM Producto as  prod,proveedor as prov  WHERE idProducto=".$idProducto;;
+FROM Producto as  prod  WHERE idProducto=".$idProducto;
 	
 
 		return $this->findAllBySql($sql);

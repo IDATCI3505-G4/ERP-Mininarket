@@ -11,11 +11,13 @@ stado char(1)
 
 create table Proveedor(
 idProveedor int AUTO_INCREMENT Primary Key,
-nombre varchar(200),
-tipoPersona BOOL,
+RasonSocial varchar(200),
+tipoPersona char(1),
 RUC varchar(11),
 direccion varchar(100),
-telefono char(9)
+telefono char(9),
+email varchar(255),
+stado char(1)
 );
 select * from Proveedor
 alter table Producto add CONSTRAINT fk_producto_proveedor FOREIGN KEY (idProveedor) references Proveedor(idProveedor);
@@ -39,4 +41,16 @@ SELECT CompanyName,
          WHEN Country = 'Brazil' THEN 'South America'
          ELSE 'Europe' END AS Continent
 FROM Suppliers
-ORDER BY CompanyName;
+ORDER BY CompanyName;}
+
+
+select * from sispersona t
+INNER JOIN admcatalogo ac ON ac.ide_elemento=t.ide_condicion
+where ac.ide_elemento=18
+$dataProvider=new CActiveDataProvider('Sispersona', array(
+		    'criteria' => array(
+		        'join' => 'INNER JOIN admcatalogo ac ON ac.ide_elemento=t.ide_condicion',
+		        'condition' =>'ac.ide_elemento='.$ideCondicion,
+                                        
+
+select * from sispersona;
