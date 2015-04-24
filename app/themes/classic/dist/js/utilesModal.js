@@ -1,3 +1,85 @@
+// ====================================================================================
+// METODO PARA REACTIVAR UN PROVEEDOR
+// ====================================================================================
+$(document).on("click", ".activarCliente", function(e) {
+	var codCliente = $(this).attr('href');
+
+	bootbox.dialog({
+	  message: "Esta seguro en activar al Cliente seleccionado?",
+	  title: "Activar Cliente",
+	  buttons: {
+	    success: {
+	      label: "Aceptar",
+	      className: "btn-success",
+	      callback: function() {
+	        waitingDialog.show('Reactivando Cliente', {dialogSize: 'sm', progressType: 'warning'});
+			jQuery.ajax({
+				url: 'index.php?r=ventas/AjaxActualizarEstadoCliente',
+				type: "POST",
+				data : {idCliente: codCliente,stado:1},
+				success: function(resp){
+					console.log(resp);
+					location.reload();
+				}
+			}).done(function(ev){
+				waitingDialog.hide();
+			});
+	      }
+	    },
+	    danger: {
+	      label: "Cancelar",
+	      className: "btn-danger",
+	      callback: function() {
+	        //Example.show("uh oh, look out!");
+	      }
+	    }
+	  }
+	});
+	
+	e.preventDefault();
+});
+
+
+// ====================================================================================
+// METODO PARA ELIMINAR UN CLIENTE
+// ====================================================================================
+$(document).on("click", ".desactivarCliente", function(e) {
+	var codCliente = $(this).attr('href');
+
+	bootbox.dialog({
+	  message: "Esta seguro en eliminar al Cliente seleccionado?",
+	  title: "Eliminar Cliente",
+	  buttons: {
+	    success: {
+	      label: "Aceptar",
+	      className: "btn-success",
+	      callback: function() {
+	        waitingDialog.show('Eliminando Cliente', {dialogSize: 'sm', progressType: 'warning'});
+			jQuery.ajax({
+				url: 'index.php?r=ventas/AjaxActualizarEstadoCliente',
+				type: "POST",
+				data : {idCliente: codCliente,stado:0},
+				success: function(resp){
+					console.log(resp);
+					location.reload();
+				}
+			}).done(function(ev){
+				waitingDialog.hide();
+			});
+	      }
+	    },
+	    danger: {
+	      label: "Cancelar",
+	      className: "btn-danger",
+	      callback: function() {
+	        //Example.show("uh oh, look out!");
+	      }
+	    }
+	  }
+	});
+	
+	e.preventDefault();
+});
 
 // ====================================================================================
 // METODO PARA ACTUALIZAR UN CLIENTE
