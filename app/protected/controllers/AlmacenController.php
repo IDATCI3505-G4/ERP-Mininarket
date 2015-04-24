@@ -17,10 +17,19 @@ class AlmacenController extends Controller{
 	}
 
 	public function actionAjaxActualizarProducto(){
-		$ideProducto = $_POST['idProducto'];
 
 
-		$respuesta = Producto::model()->actualizaEstadoProducto($ideProducto);
+		$idProducto = $_POST['idProducto'];
+		$idProveedor = $_POST['idProveedor'];
+		$descripcion = $_POST['descripcion'];
+		$precioCompra = $_POST['precioCompra'];
+		$precioVenta = $_POST['precioVenta'];
+		$stock = $_POST['stock'];
+		$fechaVencimiento = $_POST['fechaVencimiento'];
+		$stado = $_POST['stado'];
+
+
+		$respuesta = Producto::model()->actualizarProducto($idProducto,$idProveedor,$descripcion,$precioCompra,$precioVenta,$stock,$fechaVencimiento,$stado);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));

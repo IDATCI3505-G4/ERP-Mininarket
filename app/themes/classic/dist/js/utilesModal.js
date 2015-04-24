@@ -16,15 +16,57 @@ $(document).on("click", ".editarProducto", function(e) {
 			title: "Visualizando detalles del Producto",
 		    message: '<div class="row"> ' +
 		             '<div class="col-md-12"> ' +
-		             '<form class="form-horizontal"> ' +
-
-		             filaFormulario('Descripcion', 'itext', data.Descripcion)+
+		             '<form class="form-horizontal">' +
+		             '<div class="form-group">'+
+		             '<label class="col-md-4 control-label" for="descripcion">Descripción:</label>'+
+		             '<div class="col-md-7">'+
+		             '<input id="descripcion" name="descripcion" type="text" placeholder="Descripcion" class="form-control input-md" value="'+data.Descripcion+'">'+
+		             '</div>'+
+		             '</div>'+
+		             '<div class="form-group">'+
+		             '<label class="col-md-4 control-label" for="idProveedor">idProveedor:</label>'+
+		             '<div class="col-md-7">'+
+		             '<input id="idProveedor" name="idProveedor" type="text" placeholder="Proveedor" class="form-control input-md" value="'+data.idProveedor+'">'+
+		             '</div>'+
+		             '</div>'+
+		             '<div class="form-group">'+
+		             '<label class="col-md-4 control-label" for="precioCompra">Precio de Compra:</label>'+
+		             '<div class="col-md-7">'+
+		             '<input id="precioCompra" name="precioCompra" type="text" placeholder="Precio de Compra" class="form-control input-md" value="'+data.precioCompra+'">'+
+		             '</div>'+
+		             '</div>'+
+		             '<div class="form-group">'+
+		             '<label class="col-md-4 control-label" for="precioVenta">Precio de Venta:</label>'+
+		             '<div class="col-md-7">'+
+		             '<input id="precioVenta" name="precioVenta" type="text" placeholder="Precio de Venta" class="form-control input-md" value="'+data.precioVenta+'">'+
+		             '</div>'+
+		             '</div>'+
+		             '<div class="form-group">'+
+		             '<label class="col-md-4 control-label" for="stock">stock:</label>'+
+		             '<div class="col-md-7">'+
+		             '<input id="stock" name="stock" type="text" placeholder="stock" class="form-control input-md" value="'+data.stock+'">'+
+		             '</div>'+
+		             '</div>'+
+		             '<div class="form-group">'+
+		             '<label class="col-md-4 control-label" for="fechaVencimiento">Fecha de Vencimiento:</label>'+
+		             '<div class="col-md-7">'+
+		             '<input id="fechaVencimiento" name="fechaVencimiento" type="text" placeholder="fechaVencimiento" class="form-control input-md" value="'+data.fechaVencimiento+'">'+
+		             '</div>'+
+		             '</div>'+
+		             '<div class="form-group">'+
+		             '<label class="col-md-4 control-label" for="stado">Estado:</label>'+
+		             '<div class="col-md-7">'+
+		             '<input id="stado" name="stado" type="text" placeholder="stado" class="form-control input-md" value="'+data.stado+'">'+
+		             '</div>'+
+		             '</div>'+
+		             	
+		             /*filaFormulario('Descripcion', 'itext', data.Descripcion)+
 		             filaFormulario('IdProveedor', 'itext', data.idProveedor)+
 		             filaFormulario('precioCompra', 'itext', data.precioCompra)+
 		             filaFormulario('precioVenta', 'itext', data.precioVenta)+
 		             filaFormulario('stock', 'itext', data.stock)+
 		             filaFormulario('fechaVencimiento', 'itext', data.fechaVencimiento)+
-		             filaFormulario('ESTADO', 'itext',data.stado)+'</b>'+
+		             filaFormulario('ESTADO', 'itext',data.stado)+'</b>'+*/
 		             
 		             '</form>'+
 		             ' </div>  </div>',
@@ -33,11 +75,19 @@ $(document).on("click", ".editarProducto", function(e) {
 			      label: "Aceptar",
 			      className: "btn-success",
 			      callback: function() {
-			        waitingDialog.show('Eliminando Empleado', {dialogSize: 'sm', progressType: 'warning'});
+			        waitingDialog.show('Actualizando Producto', {dialogSize: 'sm', progressType: 'warning'});
+			        var idProv=$('#idProveedor').val();
+			        var descProd=$('#descripcion').val();
+			        var PComProd=$('#precioCompra').val();
+			        var pVentProd=$('#precioVenta').val();
+			        var stockProd=$('#stock').val();
+			        var fecvendProd=$('#fechaVencimiento').val();
+			        var stadoProd=$('#stado').val();
+			        console.log(idProv+","+descProd);
 					jQuery.ajax({
 						url: 'index.php?r=almacen/AjaxActualizarProducto',
 						type: "POST",
-						data : {idProducto: codProducto, },
+						data : {idProducto: codProducto,idProveedor: idProv,descripcion:descProd,precioCompra:PComProd,precioVenta:pVentProd,stock:stockProd,fechaVencimiento:fecvendProd,stado:stadoProd},
 						success: function(resp){
 							console.log(resp);
 							location.reload();

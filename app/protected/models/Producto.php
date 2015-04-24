@@ -50,13 +50,21 @@ FROM Producto as  prod,proveedor as prov  WHERE idProducto=".$idProducto;;
 	/**
 	* Se elimina una persona
 	**/
-	public function actualizaEstadoProducto($idProducto){
+	public function actualizarProducto($idProducto,$idProveedor,$descripcion,$precioCompra,$precioVenta,$stock,$fechaVencimiento,$stado){
 		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$producto = Producto::model()->findByPk($idProducto);
 
 		if(count($producto)>0){
-			
+	
+			$producto->idProducto=$idProducto;
+			$producto->idProveedor=$idProveedor;
+			$producto->Descripcion=$descripcion;
+			$producto->precioCompra=$precioCompra;
+			$producto->precioVenta=$precioVenta;
+			$producto->stock=$stock;
+			$producto->fechaVencimiento=$fechaVencimiento;
+			$producto->stado=$stado;
 		
 			if(!$producto->save()){
 				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
