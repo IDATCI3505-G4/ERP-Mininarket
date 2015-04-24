@@ -18,6 +18,7 @@ $this->breadcrumbs=array(
     	<h3 class='box-title'><i class="fa fa-archive"></i> Listado de Productos</h3>
     </div>
     <div class='box-body'>
+      <button type="button" class="btn btn-default" id="AgregarProducto"> <i class="fa fa-plus "></i> Agregar Productos</button>
     	<?php
                   $this->widget('zii.widgets.grid.CGridView', array(
                     'id'=>'tablareporte',
@@ -81,7 +82,7 @@ $this->breadcrumbs=array(
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/delete_16x16.png',
                                 'options'=>array('class'=>'eliminarProducto'),
                                 'url'=>'$data->idProducto',
-                                'visible'=>'$data->stado == 1',
+                                //'visible'=>'$data->stado == V',
                                 //'click'=>'function(){alert("Going down!");}',
                             ),
                             'activar' => array(
@@ -89,7 +90,7 @@ $this->breadcrumbs=array(
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/ok_16x16.png',
                                 'options'=>array('class'=>'sis-activar'),
                                 'url'=>'$data->idProducto',
-                                'visible'=>'$data->stado == 0',
+                                //'visible'=>'$data->stado == C',
                                 //'click'=>'function(){alert("Going down!");}',
                             ),
                         ),

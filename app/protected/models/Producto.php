@@ -75,6 +75,42 @@ FROM Producto as  prod,proveedor as prov  WHERE idProducto=".$idProducto;;
 
 		return $resultado;
 	}
+	public function agregarProducto($idProveedor,$descripcion,$precioCompra,$precioVenta,$stock,$fechaVencimiento,$stado){
+		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+
+		$producto=new Producto;
+
+		
+	
+		
+			$producto->idProveedor=$idProveedor;
+			$producto->Descripcion=$descripcion;
+			$producto->precioCompra=$precioCompra;
+			$producto->precioVenta=$precioVenta;
+			$producto->stock=$stock;
+			$producto->fechaVencimiento=$fechaVencimiento;
+			$producto->stado=$stado;
+		
+			if(!$producto->save()){
+				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+			}
+		
+
+		return $resultado;
+	}
+	public function eliminarProducto($idProducto){
+
+		$resultado = 'Producto Eliminado';
+		$producto=Producto::model()->findByPk($idProducto); // asumiendo que existe un post cuyo ID es 10
+		$producto->delete(); // borra la fila de la tabla de la base de datos
+
+		// borra todas las filas que coincidan con la condición especificada
+		//Productos::model()->deleteAll($condition,$params);
+		// borra todas las filas que coincidan con la condición especificada y con la(s) clave(s) primaria(s)
+
+		//Productos::model()->deleteByPk($idProducto);
+		return $resultado;
+	}
 	/**
 	 * @return string the associated database table name
 	 */
