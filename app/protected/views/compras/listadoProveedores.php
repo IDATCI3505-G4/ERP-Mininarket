@@ -35,7 +35,7 @@ $this->breadcrumbs=array(
                        ),
                       array(
                            'name'=>'tipoPersona',
-                           'value'=>'$data->tipoPersona',
+                           'value'=>'($data->tipoPersona==1)?"JURIDICA":"NATURAL"',
                        ),
                       array(
                            'name'=>'RUC',
@@ -49,10 +49,11 @@ $this->breadcrumbs=array(
                        ),array(
                            'name'=>'email',
                            'value'=>'$data->email',
-                       ),array(
+                       ),
+                       /*array(
                            'name'=>'stado',
                            'value'=>'$data->stado',
-                       ),
+                       ),*/
                       array(
                         'class'=>'CButtonColumn',
                         'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}{activar}',

@@ -1,5 +1,86 @@
 // ====================================================================================
-// METODO PARA ACTUALIZAR UN PRODUCTO
+// METODO PARA REACTIVAR UN PROVEEDOR
+// ====================================================================================
+$(document).on("click", ".activarProveedor", function(e) {
+	var codProveedor = $(this).attr('href');
+
+	bootbox.dialog({
+	  message: "Esta seguro en activar al Proveedor seleccionado?",
+	  title: "Activar Proveedor",
+	  buttons: {
+	    success: {
+	      label: "Aceptar",
+	      className: "btn-success",
+	      callback: function() {
+	        waitingDialog.show('Reactivando Proveedor', {dialogSize: 'sm', progressType: 'warning'});
+			jQuery.ajax({
+				url: 'index.php?r=compras/AjaxActualizarEstadoProveedor',
+				type: "POST",
+				data : {idProveedor: codProveedor,stado:1},
+				success: function(resp){
+					console.log(resp);
+					location.reload();
+				}
+			}).done(function(ev){
+				waitingDialog.hide();
+			});
+	      }
+	    },
+	    danger: {
+	      label: "Cancelar",
+	      className: "btn-danger",
+	      callback: function() {
+	        //Example.show("uh oh, look out!");
+	      }
+	    }
+	  }
+	});
+	
+	e.preventDefault();
+});
+
+// ====================================================================================
+// METODO PARA ELIMINAR UN PROVEEDOR
+// ====================================================================================
+$(document).on("click", ".desactivarProveedor", function(e) {
+	var codProveedor = $(this).attr('href');
+
+	bootbox.dialog({
+	  message: "Esta seguro en eliminar al Proveedor seleccionado?",
+	  title: "Eliminar Proveedor",
+	  buttons: {
+	    success: {
+	      label: "Aceptar",
+	      className: "btn-success",
+	      callback: function() {
+	        waitingDialog.show('Eliminando Empleado', {dialogSize: 'sm', progressType: 'warning'});
+			jQuery.ajax({
+				url: 'index.php?r=compras/AjaxActualizarEstadoProveedor',
+				type: "POST",
+				data : {idProveedor: codProveedor,stado:0},
+				success: function(resp){
+					console.log(resp);
+					location.reload();
+				}
+			}).done(function(ev){
+				waitingDialog.hide();
+			});
+	      }
+	    },
+	    danger: {
+	      label: "Cancelar",
+	      className: "btn-danger",
+	      callback: function() {
+	        //Example.show("uh oh, look out!");
+	      }
+	    }
+	  }
+	});
+	
+	e.preventDefault();
+});
+// ====================================================================================
+// METODO PARA AGREGAR UN PROVEEDOR
 // ====================================================================================
 $(document).on("click","#AgregarProveedor", function(e) {
 	var codProveedor = $(this).attr('href');
@@ -121,7 +202,7 @@ $(document).on("click","#AgregarProveedor", function(e) {
 	
 	e.preventDefault();
 });// ====================================================================================
-// METODO PARA ACTUALIZAR UN PRODUCTO
+// METODO PARA ACTUALIZAR UN PROVEEDOR
 // ====================================================================================
 $(document).on("click","#editarproveedor", function(e) {
 	var codProveedor = $(this).attr('href');
@@ -271,7 +352,7 @@ $(document).on("click", ".verProveedor", function(e) {
 		             '</div> ' +
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">tipoPersona:</label> ' +
-		             '<div class="col-md-7"><span class="help-block">'+data.tipoPersona+'</span></div> ' +
+		             '<div class="col-md-7"><span class="help-block">'+(data.tipoPersona==1?"JURIDICA":"NATURAL")+'</span></div>' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">RUC  :</label> ' +
@@ -287,7 +368,7 @@ $(document).on("click", ".verProveedor", function(e) {
 		             '</div> ' +
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">Estado :</label> ' +
-		             '<div class="col-md-7"><span class="help-block">'+data.stado+'</span></div> ' +
+		             '<div class="col-md-7"><span class="help-block">'+(data.stado==1?"ACTIVO":"INACTIVO")+' en el Sistema</span></div> ' +
 		             '</div> ' +
 
 		             '</form>'+
@@ -769,46 +850,6 @@ $(document).on("click", ".sis-editar", function(e) {
 	e.preventDefault();
 });
 
-// ====================================================================================
-// METODO PARA ELIMINAR UN PROVEEDOR
-// ====================================================================================
-$(document).on("click", ".desactivarProveedor", function(e) {
-	var codProveedor = $(this).attr('href');
-
-	bootbox.dialog({
-	  message: "Esta seguro en eliminar al Proveedor seleccionado?",
-	  title: "Eliminar Proveedor",
-	  buttons: {
-	    success: {
-	      label: "Aceptar",
-	      className: "btn-success",
-	      callback: function() {
-	        waitingDialog.show('Eliminando Empleado', {dialogSize: 'sm', progressType: 'warning'});
-			jQuery.ajax({
-				url: 'index.php?r=compras/AjaxActualizarEstadoProveedor',
-				type: "POST",
-				data : {idProveedor: codProveedor,stado:0},
-				success: function(resp){
-					console.log(resp);
-					location.reload();
-				}
-			}).done(function(ev){
-				waitingDialog.hide();
-			});
-	      }
-	    },
-	    danger: {
-	      label: "Cancelar",
-	      className: "btn-danger",
-	      callback: function() {
-	        //Example.show("uh oh, look out!");
-	      }
-	    }
-	  }
-	});
-	
-	e.preventDefault();
-});
 // ====================================================================================
 // METODO PARA ELIMINAR UNA PERSONA
 // ====================================================================================

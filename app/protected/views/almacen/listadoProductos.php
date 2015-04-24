@@ -55,7 +55,7 @@ $this->breadcrumbs=array(
                            'value'=>'$data->fechaVencimiento',
                        ),array(
                            'name'=>'stado',
-                           'value'=>'$data->stado',
+                           'value'=>'($data->stado==1)?"VIGENTE":"CADUCADO"',
                        ),
                       array(
                         'class'=>'CButtonColumn',
