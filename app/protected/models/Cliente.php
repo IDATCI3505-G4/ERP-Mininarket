@@ -60,6 +60,30 @@ public function actualizarCliente($idCliente,$RazonSocial,$tipoPersona,$ruc,$dir
 
 		return $resultado;
 	}
+	public function agregarCliente($RazonSocial,$tipoPersona,$ruc,$direccion,$telefono,$email,$fechaInsc,$stado){
+		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+
+		$cliente=new Cliente;
+
+		
+	
+		
+			$cliente->RazonSocial=$RazonSocial;
+			$cliente->tipoPersona=$tipoPersona;
+			$cliente->ruc=$ruc;
+			$cliente->direccion=$direccion;
+			$cliente->telefono=$telefono;
+			$cliente->email=$email;
+			$cliente->fechaInsc=$fechaInsc;
+			$cliente->stado=$stado;
+			if(!$cliente->save()){
+				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+			}
+		
+
+		return $resultado;
+	}
+
 
 	/**
 	 * @return string the associated database table name
