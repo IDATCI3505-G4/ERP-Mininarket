@@ -18,9 +18,9 @@ class AlmacenController extends Controller{
 
 	public function actionAjaxActualizarProducto(){
 		$ideProducto = $_POST['idProducto'];
-		$ideEstado = $_POST['stado'];
 
-		$respuesta = Sispersona::model()->actualizaEstadoProducto($ideProducto, $ideEstado);
+
+		$respuesta = Producto::model()->actualizaEstadoProducto($ideProducto);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));

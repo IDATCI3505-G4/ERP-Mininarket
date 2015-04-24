@@ -1,4 +1,69 @@
 // ====================================================================================
+// METODO PARA ACTUALIZAR UNA PERSONA
+// ====================================================================================
+$(document).on("click", ".editarProducto", function(e) {
+	var codProducto = $(this).attr('href');
+	console.log("idProducto="+codProducto);
+
+	waitingDialog.show('Buscando Producto', {dialogSize: 'sm', progressType: 'warning'});
+	jQuery.ajax({
+		url: 'index.php?r=almacen/AjaxObtenerProducto',
+		type: "POST",
+		data : {idProducto: codProducto},
+		success: function(resp){
+			data = resp.output;
+			bootbox.dialog({
+			title: "Visualizando detalles del Producto",
+		    message: '<div class="row"> ' +
+		             '<div class="col-md-12"> ' +
+		             '<form class="form-horizontal"> ' +
+
+		             filaFormulario('Descripcion', 'itext', data.Descripcion)+
+		             filaFormulario('IdProveedor', 'itext', data.idProveedor)+
+		             filaFormulario('precioCompra', 'itext', data.precioCompra)+
+		             filaFormulario('precioVenta', 'itext', data.precioVenta)+
+		             filaFormulario('stock', 'itext', data.stock)+
+		             filaFormulario('fechaVencimiento', 'itext', data.fechaVencimiento)+
+		             filaFormulario('ESTADO', 'itext',data.stado)+'</b>'+
+		             
+		             '</form>'+
+		             ' </div>  </div>',
+		    buttons: {
+			    success: {
+			      label: "Aceptar",
+			      className: "btn-success",
+			      callback: function() {
+			        waitingDialog.show('Eliminando Empleado', {dialogSize: 'sm', progressType: 'warning'});
+					jQuery.ajax({
+						url: 'index.php?r=almacen/AjaxActualizarProducto',
+						type: "POST",
+						data : {idProducto: codProducto, },
+						success: function(resp){
+							console.log(resp);
+							location.reload();
+						}
+					}).done(function(ev){
+						waitingDialog.hide();
+					});
+			      }
+			    },
+			    danger: {
+			      label: "Cancelar",
+			      className: "btn-danger",
+			      callback: function() {
+			        //Example.show("uh oh, look out!");
+			      }
+			    }
+			}
+		});
+		}
+	}).done(function(ev){
+		waitingDialog.hide();
+	});
+	
+	e.preventDefault();
+});
+// ====================================================================================
 // METODO PARA VER EL DETALLE DEL PRODUCTO
 // ====================================================================================
 $(document).on("click", ".verProducto", function(e) {
@@ -19,7 +84,7 @@ $(document).on("click", ".verProducto", function(e) {
 		             '<form class="form-horizontal"> ' +
 
 		             '<div class="form-group"> ' +
-		             '<label class="col-md-5 control-label" for="name">Descripción:</label> ' +
+		             '<label class="col-md-5 control-label" for="name">Descripci&oacute;n:</label> ' +
 		             '<div class="col-md-7"><span class="help-block">'+data.Descripcion+'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
@@ -27,23 +92,23 @@ $(document).on("click", ".verProducto", function(e) {
 		             '<div class="col-md-7"><span class="help-block">'+data.idProveedor+'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
-		             '<label class="col-md-5 control-label" for="name">precioCompra:</label> ' +
+		             '<label class="col-md-5 control-label" for="name">Precio de Compra :</label> ' +
 		             '<div class="col-md-7"><span class="help-block"> S/. '+data.precioCompra+'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
-		             '<label class="col-md-5 control-label" for="name">precioVenta:</label> ' +
+		             '<label class="col-md-5 control-label" for="name">Precio de Venta :</label> ' +
 		             '<div class="col-md-7"><span class="help-block"> S/. '+data.precioVenta+'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
-		             '<label class="col-md-5 control-label" for="name">fechaVencimiento :</label> ' +
+		             '<label class="col-md-5 control-label" for="name">Fecha de Vencimiento :</label> ' +
 		             '<div class="col-md-7"><span class="help-block">'+data.fechaVencimiento +'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
-		             '<label class="col-md-5 control-label" for="name">stock:</label> ' +
+		             '<label class="col-md-5 control-label" for="name">Stock :</label> ' +
 		             '<div class="col-md-7"><span class="help-block">'+data.stock+'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
-		             '<label class="col-md-5 control-label" for="name">stado:</label> ' +
+		             '<label class="col-md-5 control-label" for="name">Estado :</label> ' +
 		             '<div class="col-md-7"><span class="help-block">'+data.stado+'</span></div> ' +
 		             '</div> ' +
 

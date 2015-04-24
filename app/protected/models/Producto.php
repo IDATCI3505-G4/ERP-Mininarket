@@ -23,7 +23,11 @@ class Producto extends CActiveRecord
 	**/
 	public function listadoProductos(){
 
+
 		$dataProvider=new CActiveDataProvider('Producto', array(
+			'criteria' => array(
+		       'select'=>'idProducto,idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,stado',
+		    ),
 			'pagination'=>array('pageSize'=>6),
 		));
 
@@ -33,17 +37,36 @@ class Producto extends CActiveRecord
 *Se muestra los productos por codigo	obtenerProductoxId
 **/
 public function obtenerProductoxId($idProducto){
-		$sql = "";
 		
-		$sql .= "SELECT idProducto,idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,
+		
+		$sql = "SELECT idProducto,prov.idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,
  IF(stado = 'V', 'Vigente','Caducado') AS stado
-FROM Producto";
-		
-		$sql .= " WHERE idProducto=".$idProducto;
+FROM Producto as  prod,proveedor as prov  WHERE idProducto=".$idProducto;;
+	
 
 		return $this->findAllBySql($sql);
 	}
 
+	/**
+	* Se elimina una persona
+	**/
+	public function actualizaEstadoProducto($idProducto){
+		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+
+		$producto = Producto::model()->findByPk($idProducto);
+
+		if(count($producto)>0){
+			
+		
+			if(!$producto->save()){
+				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+			}
+		}else{
+			$resultado = array('data'=>0, 'message'=>'No se pudo encontrar a la persona seleccionada. ');
+		}
+
+		return $resultado;
+	}
 	/**
 	 * @return string the associated database table name
 	 */

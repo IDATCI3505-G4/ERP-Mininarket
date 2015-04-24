@@ -37,7 +37,7 @@ $this->breadcrumbs=array(
                            'value'=>'$data->idProveedor',
                        ),
                       array(
-                           'name'=>'Descripción',
+                           'name'=>'Descripci&oacute;n',
                            'value'=>'$data->Descripcion',
                        ),
                       array(
