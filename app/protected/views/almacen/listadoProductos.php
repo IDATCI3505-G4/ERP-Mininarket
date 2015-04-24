@@ -29,10 +29,10 @@ $this->breadcrumbs=array(
                     'summaryText'=>'Mostrando {start}-{end} de {page} Resultado(s)',
                     'emptyText'=>'No se encontraron registros para esta consulta...',
                     'columns'=>array(
-                      array(
+                     /* array(
                            'name'=>'IdProducto',
                            'value'=>'$data->idProducto',
-                       ),
+                       ),*/
                       array(
                            'name'=>'idProveedor',
                            'value'=>'$data->idProveedor',
@@ -42,24 +42,25 @@ $this->breadcrumbs=array(
                            'value'=>'$data->Descripcion',
                        ),
                       array(
-                           'name'=>'precioCompra',
+                           'name'=>'Precio de Compra',
                            'value'=>'$data->precioCompra',
                        ),array(
-                           'name'=>'precioVenta',
+                           'name'=>'Precio de Venta',
                            'value'=>'$data->precioVenta',
                        ),array(
-                           'name'=>'stock',
+                           'name'=>'Stock',
                            'value'=>'$data->stock',
                        ),array(
-                           'name'=>'fechaVencimiento',
+                           'name'=>'Fecha de Vencimiento',
                            'value'=>'$data->fechaVencimiento',
                        ),array(
-                           'name'=>'stado',
+                           'name'=>'Estado',
                            'value'=>'($data->stado==1)?"VIGENTE":"CADUCADO"',
                        ),
                       array(
                         'class'=>'CButtonColumn',
-                        'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}{activar}',
+                        'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}',
+                        //'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}{activar}',
                         'buttons'=>array(
                             'visualizar' => array(
                                 'label'=>'Ver más información',
@@ -84,7 +85,7 @@ $this->breadcrumbs=array(
                                 'url'=>'$data->idProducto',
                                 //'visible'=>'$data->stado == V',
                                 //'click'=>'function(){alert("Going down!");}',
-                            ),
+                            ),/*
                             'activar' => array(
                                 'label'=>'Activar Producto',
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/ok_16x16.png',
@@ -92,7 +93,7 @@ $this->breadcrumbs=array(
                                 'url'=>'$data->idProducto',
                                 //'visible'=>'$data->stado == C',
                                 //'click'=>'function(){alert("Going down!");}',
-                            ),
+                            ),*/
                         ),
                         'htmlOptions'=>array('style'=>'white-space:nowrap;text-align:center;'),
                       ),

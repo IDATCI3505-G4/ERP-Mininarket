@@ -329,6 +329,68 @@ $(document).on("click","#editarproveedor", function(e) {
 // ====================================================================================
 // METODO PARA VER EL DETALLE DEL PROVEEDOR
 // ====================================================================================
+$(document).on("click", ".verCliente", function(e) {
+	var codCliente = $(this).attr('href');
+	console.log("idCliente="+codCliente);
+
+	waitingDialog.show('Buscando Cliente', {dialogSize: 'sm', progressType: 'warning'});
+	jQuery.ajax({
+		url: 'index.php?r=ventas/AjaxObtenerCliente',
+		type: "POST",
+		data : {idCliente: codCliente},
+		success: function(resp){
+			data = resp.output;
+			bootbox.dialog({
+			title: "Visualizando detalles del Cliente",
+		    message: '<div class="row">  ' +
+		             '<div class="col-md-12"> ' +
+		             '<form class="form-horizontal"> ' +
+
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">RasonSocial</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.RasonSocial+'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">tipoPersona:</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+(data.tipoPersona==1?"JURIDICA":"NATURAL")+'</span></div>' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">RUC  :</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.ruc +'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">direccion :</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.direccion+'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">telefono :</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.telefono +'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">email :</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.email +'</span></div> ' +
+		             '</div> ' +
+		             '<div class="form-group"> ' +
+		             '<label class="col-md-5 control-label" for="name">Estado :</label> ' +
+		             '<div class="col-md-7"><span class="help-block">'+(data.stado==1?"ACTIVO":"INACTIVO")+' en el Sistema</span></div> ' +
+		             '</div> ' +
+
+		             '</form>'+
+
+
+		             ' </div>  </div>'
+		});
+		}
+	}).done(function(ev){
+		waitingDialog.hide();
+	});
+	
+	e.preventDefault();
+});
+
+// ====================================================================================
+// METODO PARA VER EL DETALLE DEL PROVEEDOR
+// ====================================================================================
 $(document).on("click", ".verProveedor", function(e) {
 	var codProveedor = $(this).attr('href');
 	console.log("idProvedor="+codProveedor);

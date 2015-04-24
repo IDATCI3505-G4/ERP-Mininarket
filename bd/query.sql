@@ -9,6 +9,18 @@ fechaVencimiento date,
 stado char(1)
 );
 
+create table Cliente(
+idCliente int AUTO_INCREMENT Primary key,
+RazonSocial varchar(150),
+tipoPersona char(1),
+ruc varchar(11),
+direccion varchar(150),
+telefono char(9),
+email varchar(30),
+fechaInsc datetime,
+stado
+);
+
 create table Proveedor(
 idProveedor int AUTO_INCREMENT Primary Key,
 RasonSocial varchar(200),
@@ -20,6 +32,7 @@ email varchar(255),
 stado char(1)
 );
 select * from Proveedor
+select * from PRODUCTO
 alter table Producto add CONSTRAINT fk_producto_proveedor FOREIGN KEY (idProveedor) references Proveedor(idProveedor);
 
 insert into Proveedor values('abc.sac',1,'10234567895','los olivos','12345678')
@@ -28,6 +41,9 @@ SELECT * FROM Producto WHERE idProducto=1
 
 select prod.idProducto,prod.descripcion,prov.nombre from Proveedor prov,Producto prod
 
+SELECT idProducto,idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,
+ IF(stado = 'V', 'Vigente','Caducado') AS Estado
+FROM Producto as  prod  WHERE idProducto=1;
 
 SELECT idProducto,idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,
  IF(stado = 'V', 'Vigente','Caducado') AS stado
@@ -54,3 +70,5 @@ $dataProvider=new CActiveDataProvider('Sispersona', array(
                                         
 
 select * from sispersona;
+
+
