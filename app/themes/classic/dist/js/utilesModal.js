@@ -211,7 +211,7 @@ $(document).on("click","#AgregarCliente", function(e) {
 });
 
 // ====================================================================================
-// METODO PARA ACTUALIZAR UN CLIENTE
+// METODO PARA EDITAR UN CLIENTE
 // ====================================================================================
 $(document).on("click",".editarCliente", function(e) {
 	var codCliente = $(this).attr('href');
@@ -225,7 +225,7 @@ $(document).on("click",".editarCliente", function(e) {
 		success: function(resp){
 			data = resp.output;
 			bootbox.dialog({
-			title: "Visualizando detalles del Cliente",
+			title: "Actualiar Cliente",
 		    message: '<div class="row"> ' +
 		             '<div class="col-md-12"> ' +
 		             '<form class="form-horizontal">' +
@@ -500,7 +500,7 @@ $(document).on("click","#AgregarProveedor", function(e) {
 		success: function(resp){
 			data = resp.output;
 			bootbox.dialog({
-			title: "Visualizando detalles del Proveedor",
+			title: "Agregar Proveedor",
 		    message: '<div class="row"> ' +
 		             '<div class="col-md-12"> ' +
 		             '<form class="form-horizontal">' +
@@ -626,7 +626,7 @@ $(document).on("click","#editarproveedor", function(e) {
 		success: function(resp){
 			data = resp.output;
 			bootbox.dialog({
-			title: "Visualizando detalles del Proveedor",
+			title: "Actualizar Proveedor",
 		    message: '<div class="row"> ' +
 		             '<div class="col-md-12"> ' +
 		             '<form class="form-horizontal">' +
@@ -752,7 +752,7 @@ $(document).on("click", ".verProveedor", function(e) {
 		success: function(resp){
 			data = resp.output;
 			bootbox.dialog({
-			title: "Visualizando detalles del Producto",
+			title: "Visualizando detalles del Proveedor",
 		    message: '<div class="row">  ' +
 		             '<div class="col-md-12"> ' +
 		             '<form class="form-horizontal"> ' +
@@ -771,7 +771,7 @@ $(document).on("click", ".verProveedor", function(e) {
 		             '</div> ' +
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">direccion :</label> ' +
-		             '<div class="col-md-7"><span class="help-block"> S/. '+data.direccion+'</span></div> ' +
+		             '<div class="col-md-7"><span class="help-block">'+data.direccion+'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">email :</label> ' +
