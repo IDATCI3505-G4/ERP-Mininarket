@@ -10,5 +10,6 @@ return array(
 	'username' => 'serveracme',
 	'password' => 'acme',
 	'charset' => 'utf8',
+	//'enableProfiling'=>true,
 	
 );

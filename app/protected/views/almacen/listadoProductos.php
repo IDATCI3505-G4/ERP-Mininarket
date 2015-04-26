@@ -25,7 +25,7 @@ $this->breadcrumbs=array(
                     //'filter'=>true,
                     'htmlOptions'=>array('class'=>'table-responsive'),
                     'itemsCssClass' => 'table table-bordered table-hover',
-                    'dataProvider'=>$productos,
+                    'dataProvider'=>$dataProvider,
                     'summaryText'=>'Mostrando {start}-{end} de {page} Resultado(s)',
                     'emptyText'=>'No se encontraron registros para esta consulta...',
                     'columns'=>array(
@@ -34,28 +34,32 @@ $this->breadcrumbs=array(
                            'value'=>'$data->idProducto',
                        ),*/
                       array(
-                           'name'=>'idProveedor',
-                           'value'=>'$data->idProveedor',
+                           'name'=>'Descripación',
+                           'value'=>'$data->desc_Prod',
                        ),
-                      array(
-                           'name'=>'Descripci&oacute;n',
-                           'value'=>'$data->Descripcion',
+                        array(
+                           'name'=>'Marca',
+                           'value'=>'$data->marca->nomMarca',
                        ),
-                      array(
-                           'name'=>'Precio de Compra',
-                           'value'=>'$data->precioCompra',
+                        array(
+                           'name'=>'Categoria',
+                           'value'=>'$data->categoria->nomCategoria',
+                       ),                      
+                        array(
+                           'name'=>'Presentación',
+                           'value'=>'$data->presentacion',
                        ),array(
-                           'name'=>'Precio de Venta',
-                           'value'=>'$data->precioVenta',
+                           'name'=>'Tipo',
+                           'value'=>'($data->tipoProd==1)?"Perecible":"No Perecible"',
                        ),array(
                            'name'=>'Stock',
                            'value'=>'$data->stock',
                        ),array(
-                           'name'=>'Fecha de Vencimiento',
-                           'value'=>'$data->fechaVencimiento',
+                           'name'=>'Fecha de Creación',
+                           'value'=>'$data->fecha_creacion',
                        ),array(
                            'name'=>'Estado',
-                           'value'=>'($data->stado==1)?"VIGENTE":"CADUCADO"',
+                           'value'=>'($data->estadoProd==1)?"VIGENTE":"CADUCADO"',
                        ),
                       array(
                         'class'=>'CButtonColumn',

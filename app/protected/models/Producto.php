@@ -5,19 +5,22 @@
  *
  * The followings are the available columns in table 'producto':
  * @property integer $idProducto
- * @property integer $idProveedor
- * @property string $Descripcion
- * @property string $precioCompra
- * @property string $precioVenta
+ * @property string $desc_Prod
+ * @property string $presentacion
+ * @property string $tipoProd
  * @property integer $stock
- * @property string $fechaVencimiento
- * @property string $stado
+ * @property integer $idMarca
+ * @property integer $idCategoria
+ * @property string $fecha_creacion
+ * @property string $estadoProd
  *
  * The followings are the available model relations:
- * @property Proveedor $idProveedor0
+ * @property Categoria $idCategoria0
+ * @property Marca $idMarca0
  */
 class Producto extends CActiveRecord
 {
+
 	/**
 	* Se listan las personas por catalogo
 	**/
@@ -39,9 +42,7 @@ class Producto extends CActiveRecord
 public function obtenerProductoxId($idProducto){
 		
 		
-		$sql = "SELECT idProducto,idProveedor,Descripcion,precioCompra,precioVenta,stock,fechaVencimiento,
- IF(stado = 'V', 'Vigente','Caducado') AS stado
-FROM Producto as  prod  WHERE idProducto=".$idProducto;
+		$sql = "SELECT * FROm  WHERE idProducto=".$idProducto;
 	
 
 		return $this->findAllBySql($sql);
@@ -127,14 +128,14 @@ FROM Producto as  prod  WHERE idProducto=".$idProducto;
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idProveedor, stock', 'numerical', 'integerOnly'=>true),
-			array('Descripcion', 'length', 'max'=>150),
-			array('precioCompra, precioVenta', 'length', 'max'=>8),
-			array('stado', 'length', 'max'=>1),
-			array('fechaVencimiento', 'safe'),
+			array('desc_Prod, presentacion, stock, fecha_creacion', 'required'),
+			array('stock, idMarca, idCategoria', 'numerical', 'integerOnly'=>true),
+			array('desc_Prod', 'length', 'max'=>100),
+			array('presentacion', 'length', 'max'=>20),
+			array('tipoProd, estadoProd', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idProducto, idProveedor, Descripcion, precioCompra, precioVenta, stock, fechaVencimiento, stado', 'safe', 'on'=>'search'),
+			array('idProducto, desc_Prod, presentacion, tipoProd, stock, idMarca, idCategoria, fecha_creacion, estadoProd', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -146,7 +147,8 @@ FROM Producto as  prod  WHERE idProducto=".$idProducto;
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idProveedor0' => array(self::BELONGS_TO, 'Proveedor', 'idProveedor'),
+			'categoria' => array(self::BELONGS_TO, 'Categoria', 'idCategoria'),
+			'marca' => array(self::BELONGS_TO, 'Marca', 'idMarca'),
 		);
 	}
 
@@ -157,13 +159,14 @@ FROM Producto as  prod  WHERE idProducto=".$idProducto;
 	{
 		return array(
 			'idProducto' => 'Id Producto',
-			'idProveedor' => 'Id Proveedor',
-			'Descripcion' => 'Descripcion',
-			'precioCompra' => 'Precio Compra',
-			'precioVenta' => 'Precio Venta',
+			'desc_Prod' => 'Desc Prod',
+			'presentacion' => 'Presentacion',
+			'tipoProd' => 'Tipo Prod',
 			'stock' => 'Stock',
-			'fechaVencimiento' => 'Fecha Vencimiento',
-			'stado' => 'Stado',
+			'idMarca' => 'Id Marca',
+			'idCategoria' => 'Id Categoria',
+			'fecha_creacion' => 'Fecha Creacion',
+			'estadoProd' => 'Estado Prod',
 		);
 	}
 
@@ -186,13 +189,14 @@ FROM Producto as  prod  WHERE idProducto=".$idProducto;
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idProducto',$this->idProducto);
-		$criteria->compare('idProveedor',$this->idProveedor);
-		$criteria->compare('Descripcion',$this->Descripcion,true);
-		$criteria->compare('precioCompra',$this->precioCompra,true);
-		$criteria->compare('precioVenta',$this->precioVenta,true);
+		$criteria->compare('desc_Prod',$this->desc_Prod,true);
+		$criteria->compare('presentacion',$this->presentacion,true);
+		$criteria->compare('tipoProd',$this->tipoProd,true);
 		$criteria->compare('stock',$this->stock);
-		$criteria->compare('fechaVencimiento',$this->fechaVencimiento,true);
-		$criteria->compare('stado',$this->stado,true);
+		$criteria->compare('idMarca',$this->idMarca);
+		$criteria->compare('idCategoria',$this->idCategoria);
+		$criteria->compare('fecha_creacion',$this->fecha_creacion,true);
+		$criteria->compare('estadoProd',$this->estadoProd,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

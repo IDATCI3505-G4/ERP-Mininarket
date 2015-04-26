@@ -1,13 +1,32 @@
 create table Producto(
-idProducto int AUTO_INCREMENT Primary key,
-idProveedor int,
-Descripcion varchar(150),
-precioCompra numeric(8,2),
-precioVenta numeric(8,2),
-stock int,
-fechaVencimiento date,
-stado char(1)
+idProducto int AUTO_INCREMENT PRIMARY KEY,
+desc_Prod varchar(100) NOT NULL,
+presentacion varchar(20) NOT NULL,
+tipoProd char(1) NOT  NULL DEFAULT '1',
+stock int NOT NULL,
+idMarca int ,
+idCategoria int,
+fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+estadoProd char(1) not null DEFAULT '1'
 );
+
+
+create table Marca(
+idMarca int AUTO_INCREMENT PRIMARY KEY,
+nomMarca varchar(100) NOT NULL
+);
+
+create table Categoria(
+idCategoria int AUTO_INCREMENT PRIMARY KEY,
+nomCategoria varchar(50) NOT NULL
+);
+
+
+
+alter table Producto add CONSTRAINT fk_producto_categoria FOREIGN KEY (idCategoria) references Categoria(idCategoria);
+alter table Producto add CONSTRAINT fk_producto_marca FOREIGN KEY (idMarca) references Marca(idMarca);
+
+
 
 create table Cliente(
 idCliente int AUTO_INCREMENT Primary key,
@@ -17,7 +36,7 @@ ruc varchar(11),
 direccion varchar(150),
 telefono char(9),
 email varchar(30),
-fechaInsc datetime,
+fechaInsc datetime
 );
 
 create table Proveedor(
@@ -30,6 +49,7 @@ telefono char(9),
 email varchar(255),
 stado char(1)
 );
+
 select * from Proveedor
 select * from PRODUCTO
 alter table Producto add CONSTRAINT fk_producto_proveedor FOREIGN KEY (idProveedor) references Proveedor(idProveedor);
