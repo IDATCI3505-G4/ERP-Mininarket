@@ -1,3 +1,39 @@
+$("#provincias").change(function() {
+  
+});
+
+$(document).on("click", "#btnNewProducto", function() {
+
+            $.post("index.php?r=almacen/AjaxListarMarcas", function(marcas) {
+                // obtenemos el combo de ciudades
+                var $comboMarcas= $("#Lista_Marcas");
+                // lo vaciamos
+                $comboMarcas.empty();
+                //console.log(marcas);
+                // iteramos a través del arreglo de ciudades
+                $comboMarcas.append("<option>Seleccione Marca</option>");
+                $.each(marcas, function(index, marca) {
+                    // agregamos opciones al combo
+                    $comboMarcas.append("<option value="+marca.idMarca+">" + marca.nomMarca + "</option>");
+                });
+            }, 'json');     
+
+             $.post("index.php?r=almacen/AjaxListarCategorias", function(categorias) {
+                var $comboCategorias= $("#Lista_Caterorias");
+
+                $comboCategorias.empty();
+              	$comboCategorias.append("<option>Seleccione Categoría</option>");
+                $.each(categorias, function(index, categoria) {
+                    // agregamos opciones al combo
+                    $comboCategorias.append("<option value="+categoria.idCategoria+">" + categoria.nomCategoria + "</option>");
+                });
+            }, 'json');    
+
+
+	
+
+});
+
 // ====================================================================================
 // METODO PARA AGREGAR UN PRODUCTO
 // ====================================================================================
@@ -151,6 +187,11 @@ $(document).on("click", ".eliminarProducto", function(e) {
 	
 	e.preventDefault();
 });
+
+// ====================================================================================
+// METODO PARA VER Llenar Marcas
+// ====================================================================================
+
 
 
 // ====================================================================================

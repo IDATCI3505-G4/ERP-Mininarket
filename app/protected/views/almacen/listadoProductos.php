@@ -126,3 +126,84 @@ $this->breadcrumbs=array(
                    ?>
 	</div>
 </div>
+<button type="button" class="btn btn-primary" id="btnNewProducto" data-toggle="modal" data-target="#ModalnewProducto" >Open modal for @mdo</button>
+<!-- Modal -->
+        <div class="modal fade" id="ModalnewProducto" tabindex="-1" role="dialog" aria-labelledby="myModalEditarEmpleadoLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- Cabecera -->
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="$('#myModalEditarEmpleado').modal('hide');" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalEditarEmpleadoLabel">Nuevo Producto<img class="loading-small-precarga" style="display: none;" src="<?php echo Yii::app()->theme->baseUrl;?>/dist/img/loading.gif" /></h4>
+              </div>
+              <!-- /Cabecera -->
+              <div class="modal-body">
+                <form id="empleadoForm" method="post"  class="form-horizontal"   target="empleadoPG" >                  
+                 
+
+                  <div class="form-group">
+                    <label class="col-lg-4 control-label">Marca:</label>
+                    <div class="col-lg-7">
+                      <select class="form-control" name="selEstadoCivil" id="Lista_Marcas"></select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-lg-4 control-label">Categoría:</label>
+                    <div class="col-lg-7">
+                      <select class="form-control" name="selEstadoCivil" id="Lista_Caterorias"></select>
+                    </div>
+                  </div>
+
+                  <input type="hidden" id="idSegusuario" name="idSegusuario" >
+                  <div role="alert" hidden="false" id="mensaje-succes-usuario-div">
+                    <span id="mensaje-succes-usuario"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-md-5 col-md-offset-3">
+                      <button type="submit" class="btn btn-primary">Registrar</button>
+                      <button   id="cerrarmodal" class="btn btn-primary"    data-dismiss="modal" rel="tooltip" title="Cerrar"
+                      >Cerrar</button>
+                    </div>
+                  </div>
+                </form><!-- /# usuarioForm -->
+
+                <iframe name="empleadoPG" style="display: none;"></iframe>
+
+              </div><!-- /.modal-body -->
+
+              <div class="alert alert-dismissable alert-danger" id="message_save_usuario" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert" >x</button>
+                <strong></strong>
+              </div>
+
+            </div><!-- /. modal-content -->
+          </div><!-- /. modal-dialog-->
+
+          <iframe name="saveGp" style="display: none;"></iframe>
+        </div><!-- /#myModalEditarEmpleado -->
+
+
+        <div class="modal fade" id="dialogUsuarioModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Eliminar Usuario</h4>
+              </div>
+              <div class="modal-body">
+                <p>Estas seguro de eliminar el usuario?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary btnEliminar" id="btneliminar" value="" lang=""
+                onclick="javascript:coreFn.confirmEliminarUsuario(this);">Si</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->

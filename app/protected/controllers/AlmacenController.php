@@ -1,6 +1,25 @@
 <?php
 class AlmacenController extends Controller{
 
+public function actionAjaxListarMarcas(){
+	
+		
+	
+		$marcas = Marca::model()->findAll();
+
+		header('Content-Type: application/json; charset="UTF-8"');
+    	echo CJSON::encode($marcas);
+}
+public function actionAjaxListarCategorias(){
+	
+		
+	
+		$marcas = Categoria::model()->findAll();
+
+		header('Content-Type: application/json; charset="UTF-8"');
+    	echo CJSON::encode($marcas);
+}
+
 	public function actionListadoProductos(){
 
 		// $productos = Producto::model()->listadoProductos();
