@@ -128,60 +128,99 @@ $this->breadcrumbs=array(
 </div>
 <button type="button" class="btn btn-primary" id="btnNewProducto" data-toggle="modal" data-target="#ModalnewProducto" >Open modal for @mdo</button>
 <!-- Modal -->
-        <div class="modal fade" id="ModalnewProducto" tabindex="-1" role="dialog" aria-labelledby="myModalEditarEmpleadoLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <!-- Cabecera -->
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" onclick="$('#myModalEditarEmpleado').modal('hide');" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalEditarEmpleadoLabel">Nuevo Producto<img class="loading-small-precarga" style="display: none;" src="<?php echo Yii::app()->theme->baseUrl;?>/dist/img/loading.gif" /></h4>
-              </div>
-              <!-- /Cabecera -->
-              <div class="modal-body">
-                <form id="empleadoForm" method="post"  class="form-horizontal"   target="empleadoPG" >                  
-                 
+<div class="modal fade" id="ModalnewProducto" tabindex="-1" role="dialog" aria-labelledby="myModalEditarEmpleadoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Cabecera -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" onclick="$('#myModalEditarEmpleado').modal('hide');" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalEditarEmpleadoLabel">Nuevo Producto<img class="loading-small-precarga" style="display: none;" src="<?php echo Yii::app()->theme->baseUrl;?>/dist/img/loading.gif" /></h4>
+      </div>
+      <!-- /Cabecera -->
+<!-- 
+create table Producto(
+idProducto int AUTO_INCREMENT PRIMARY KEY,
+desc_Prod varchar(100) NOT NULL,
+presentacion varchar(20) NOT NULL,
+tipoProd char(1) NOT  NULL DEFAULT '1',
+stock int NOT NULL,
+idMarca int ,
+idCategoria int,
+fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+estadoProd char(1) not null DEFAULT '1'
+);
 
-                  <div class="form-group">
-                    <label class="col-lg-4 control-label">Marca:</label>
-                    <div class="col-lg-7">
-                      <select class="form-control" name="selEstadoCivil" id="Lista_Marcas"></select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-4 control-label">Categoría:</label>
-                    <div class="col-lg-7">
-                      <select class="form-control" name="selEstadoCivil" id="Lista_Caterorias"></select>
-                    </div>
-                  </div>
 
-                  <input type="hidden" id="idSegusuario" name="idSegusuario" >
-                  <div role="alert" hidden="false" id="mensaje-succes-usuario-div">
-                    <span id="mensaje-succes-usuario"></span>
-                  </div>
+-->
+<div class="modal-body">
+  <form id="newProductoForm" method="post"  class="form-horizontal"   target="" >                  
+  
+    <div class="alert alert-dismissable alert-danger" id="mensaje_save_Producto" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert" >x</button>
+        <strong id="text_save_Prod"></strong>
+      </div>
+    <div class="form-group">
+      <label class="col-lg-4 control-label">Descripción:</label>
+      <div class="col-lg-7">
+        <input type="text" class="form-control" id="add_desc_Prod"   name="add_desc_Prod" placeholder="Descripción del Producto"  >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-4 control-label">presentacion:</label>
+      <div class="col-lg-7">
+        <input type="text" class="form-control" id="add_presentacion"   name="add_presentacion" placeholder="Presentacion del Producto"  >
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="col-lg-4 control-label">Tipo de Producto:</label>
+       <div class="col-lg-7">
+        <select class="form-control" name="add_tipoProd" id="add_tipoProd">
+          <option value="0">Perecible</option>
+          <option value="1">No Perecible</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-lg-4 control-label">Marca:</label>
+      <div class="col-lg-7">
+        <select class="form-control Lista_Marcas" name="add_Lista_Marcas" id="add_Lista_Marcas"></select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-4 control-label">Categoría:</label>
+      <div class="col-lg-7">
+        <select class="form-control Lista_Caterorias" name="add_Lista_Caterorias" id="add_Lista_Caterorias"></select>
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="col-lg-4 control-label">Stock:</label>
+      <div class="col-lg-7">
+        <input type="number" class="form-control" id="add_stock"   name="add_stock" >
+      </div>
+    </div> 
+   
 
-                  <div class="form-group">
-                    <div class="col-md-5 col-md-offset-3">
-                      <button type="submit" class="btn btn-primary">Registrar</button>
-                      <button   id="cerrarmodal" class="btn btn-primary"    data-dismiss="modal" rel="tooltip" title="Cerrar"
-                      >Cerrar</button>
-                    </div>
-                  </div>
-                </form><!-- /# usuarioForm -->
+    <div class="form-group">
+      <div class="col-md-5 col-md-offset-3">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button   id="cerrarmodal" class="btn btn-primary"    data-dismiss="modal" rel="tooltip" title="Cerrar"
+        >Cerrar</button>
+      </div>
+    </div>
+  </form><!-- /# usuarioForm -->
 
-                <iframe name="empleadoPG" style="display: none;"></iframe>
+</div><!-- /.modal-body -->
 
-              </div><!-- /.modal-body -->
+      <div class="alert alert-dismissable alert-danger" id="message_save_Producto" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert" >x</button>
+        <strong></strong>
+      </div>
 
-              <div class="alert alert-dismissable alert-danger" id="message_save_usuario" style="display: none;">
-                <button type="button" class="close" data-dismiss="alert" >x</button>
-                <strong></strong>
-              </div>
+    </div><!-- /. modal-content -->
+  </div><!-- /. modal-dialog-->
 
-            </div><!-- /. modal-content -->
-          </div><!-- /. modal-dialog-->
-
-          <iframe name="saveGp" style="display: none;"></iframe>
-        </div><!-- /#myModalEditarEmpleado -->
+</div><!-- /#myModalEditarEmpleado -->
 
 
         <div class="modal fade" id="dialogUsuarioModal">

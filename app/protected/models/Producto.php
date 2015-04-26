@@ -76,7 +76,7 @@ public function obtenerProductoxId($idProducto){
 
 		return $resultado;
 	}
-	public function agregarProducto($idProveedor,$descripcion,$precioCompra,$precioVenta,$stock,$fechaVencimiento,$stado){
+	public function agregarProducto($desc_Prod,$presentacion,$tipoProd,$stock,$idMarca,$idCategoria){
 		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$producto=new Producto;
@@ -84,14 +84,13 @@ public function obtenerProductoxId($idProducto){
 		
 	
 		
-			$producto->idProveedor=$idProveedor;
-			$producto->Descripcion=$descripcion;
-			$producto->precioCompra=$precioCompra;
-			$producto->precioVenta=$precioVenta;
+			$producto->desc_Prod=$desc_Prod;
+			$producto->presentacion=$presentacion;
+			$producto->tipoProd=$tipoProd;
 			$producto->stock=$stock;
-			$producto->fechaVencimiento=$fechaVencimiento;
-			$producto->stado=$stado;
-		
+			$producto->idMarca=$idMarca;
+			$producto->idCategoria=$idCategoria;
+
 			if(!$producto->save()){
 				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
@@ -128,14 +127,14 @@ public function obtenerProductoxId($idProducto){
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('desc_Prod, presentacion, stock, fecha_creacion', 'required'),
+			array('desc_Prod, presentacion, stock', 'required'),
 			array('stock, idMarca, idCategoria', 'numerical', 'integerOnly'=>true),
 			array('desc_Prod', 'length', 'max'=>100),
 			array('presentacion', 'length', 'max'=>20),
-			array('tipoProd, estadoProd', 'length', 'max'=>1),
+			array('tipoProd', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idProducto, desc_Prod, presentacion, tipoProd, stock, idMarca, idCategoria, fecha_creacion, estadoProd', 'safe', 'on'=>'search'),
+			array('idProducto, desc_Prod, presentacion, tipoProd, stock, idMarca, idCategoria', 'safe', 'on'=>'search'),
 		);
 	}
 

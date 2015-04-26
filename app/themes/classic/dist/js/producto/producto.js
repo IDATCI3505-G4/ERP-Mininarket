@@ -6,7 +6,7 @@ $(document).on("click", "#btnNewProducto", function() {
 
             $.post("index.php?r=almacen/AjaxListarMarcas", function(marcas) {
                 // obtenemos el combo de ciudades
-                var $comboMarcas= $("#Lista_Marcas");
+                var $comboMarcas= $(".Lista_Marcas");
                 // lo vaciamos
                 $comboMarcas.empty();
                 //console.log(marcas);
@@ -19,7 +19,7 @@ $(document).on("click", "#btnNewProducto", function() {
             }, 'json');     
 
              $.post("index.php?r=almacen/AjaxListarCategorias", function(categorias) {
-                var $comboCategorias= $("#Lista_Caterorias");
+                var $comboCategorias= $(".Lista_Caterorias");
 
                 $comboCategorias.empty();
               	$comboCategorias.append("<option>Seleccione Categoría</option>");
@@ -34,6 +34,36 @@ $(document).on("click", "#btnNewProducto", function() {
 
 });
 
+
+
+$('#newProductoForm').submit(function(e) {
+
+var desc_Prod =$("#add_desc_Prod").val();
+var presentacion =$("#add_presentacion").val();
+var tipoProd =$("#add_tipoProd").val();
+var stock =$("#add_stock").val();
+var idMarca =$("#add_Lista_Marcas").val();
+var idCategoria =$("#add_Lista_Caterorias").val();
+	e.preventDefault();
+	$.ajax({
+		url: 'index.php?r=almacen/AjaxAgregarProducto',
+		type: 'POST',		
+		data: {desc_Prod:desc_Prod,presentacion:presentacion,tipoProd:tipoProd,stock:stock,idMarca:idMarca,idCategoria:idCategoria},
+	})
+	.done(function() {
+		$("#mensaje_save_Producto").show();
+		$("#text_save_Prod").html('Registro agregado Correctamente');
+		location.reload();
+	})
+	.fail(function() {
+		$("#mensaje_save_Producto").show();
+		$("#text_save_Prod").html('Falla al Agregar Producto');
+	})
+	.always(function() {
+		
+	});
+e.preventDefault();	
+});
 // ====================================================================================
 // METODO PARA AGREGAR UN PRODUCTO
 // ====================================================================================

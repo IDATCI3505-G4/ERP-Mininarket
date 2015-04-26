@@ -58,18 +58,15 @@ public function actionAjaxListarCategorias(){
 	}
 	public function actionAjaxAgregarProducto(){
 
-
+		$desc_Prod =$_POST['desc_Prod'];
+		$presentacion =$_POST['presentacion'];
+		$tipoProd =$_POST['tipoProd'];
+		$stock =$_POST['stock'];
+		$idMarca =$_POST['idMarca'];
+		$idCategoria =$_POST['idCategoria'];
 		
-		$idProveedor = $_POST['idProveedor'];
-		$descripcion = $_POST['descripcion'];
-		$precioCompra = $_POST['precioCompra'];
-		$precioVenta = $_POST['precioVenta'];
-		$stock = $_POST['stock'];
-		$fechaVencimiento = $_POST['fechaVencimiento'];
-		$stado = $_POST['stado'];
-
-
-		$respuesta = Producto::model()->agregarProducto($idProveedor,$descripcion,$precioCompra,$precioVenta,$stock,$fechaVencimiento,$stado);
+	
+		$respuesta = Producto::model()->agregarProducto($desc_Prod,$presentacion,$tipoProd,$stock,$idMarca,$idCategoria);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
