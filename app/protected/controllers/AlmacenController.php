@@ -11,10 +11,9 @@ class AlmacenController extends Controller{
 	}
 	public function actionAjaxObtenerProducto(){
 		$idProducto = $_POST['idProducto'];
-		$sql="select desc_Prod,presentacion,tipoProd,stock,m.nomMarca,c.nomCategoria,fecha_creacion,estadoProd from Producto as p INNER JOIN Marca m ON m.idMarca=p.idMarca INNER JOIN Categoria c ON c.idCategoria=p.idCategoria where idProducto=".$idProducto;
-		$productos=Yii::app()->db->createCommand($sql)->queryAll();
-		//$categorias=$productos->categoria->nomCategoria;
-		//$productos = Producto::model()->obtenerProductoxId($idProducto);
+		
+	
+		$productos = Producto::model()->obtenerProductoxId($idProducto);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$productos[0]));

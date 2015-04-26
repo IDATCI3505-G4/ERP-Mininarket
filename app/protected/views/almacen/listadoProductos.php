@@ -34,7 +34,7 @@ $this->breadcrumbs=array(
                            'value'=>'$data->idProducto',
                        ),*/
                       array(
-                           'name'=>'Descripación',
+                           'name'=>'Descripaci&oacute;n',
                            'value'=>'$data->desc_Prod',
                        ),
                         array(
@@ -46,20 +46,20 @@ $this->breadcrumbs=array(
                            'value'=>'$data->categoria->nomCategoria',
                        ),                      
                         array(
-                           'name'=>'Presentación',
+                           'name'=>'Presentaci&oacute;n',
                            'value'=>'$data->presentacion',
                        ),array(
                            'name'=>'Tipo',
-                           'value'=>'($data->tipoProd==1)?"Perecible":"No Perecible"',
+                           'value'=>'($data->tipoProd==1)?"No Perecible":"Perecible"',
                        ),array(
                            'name'=>'Stock',
                            'value'=>'$data->stock',
                        ),array(
-                           'name'=>'Fecha de Creación',
+                           'name'=>'Fecha de Creaci&oacute;n',
                            'value'=>'$data->fecha_creacion',
                        ),array(
                            'name'=>'Estado',
-                           'value'=>'($data->estadoProd==1)?"VIGENTE":"CADUCADO"',
+                           'value'=>'($data->estadoProd==1)?"Vigente":"Caducado"',
                        ),
                       array(
                         'class'=>'CButtonColumn',
