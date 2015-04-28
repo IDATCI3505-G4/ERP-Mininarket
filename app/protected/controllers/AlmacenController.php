@@ -20,6 +20,7 @@ public function actionAjaxListarCategorias(){
     	echo CJSON::encode($marcas);
 }
 
+
 	public function actionListadoProductos(){
 
 		// $productos = Producto::model()->listadoProductos();
@@ -33,6 +34,15 @@ public function actionAjaxListarCategorias(){
 		
 	
 		$productos = Producto::model()->obtenerProductoxId($idProducto);
+
+		header('Content-Type: application/json; charset="UTF-8"');
+    	echo CJSON::encode(array('output'=>$productos[0]));
+	}
+	public function actionAjaxObtenerProducto_upd(){
+		$idProducto = $_POST['idProducto'];
+		
+	
+		$productos = Producto::model()->obtenerProductoxId_upd($idProducto);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$productos[0]));

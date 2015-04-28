@@ -47,6 +47,15 @@ public function obtenerProductoxId($idProducto){
 
 		return Yii::app()->db->createCommand($sql)->queryAll();
 	}
+	public function obtenerProductoxId_upd($idProducto){
+		
+		
+		$sql="select * from producto where idProducto=".$idProducto;
+		
+
+		return Yii::app()->db->createCommand($sql)->queryAll();
+	}
+
 
 	/**
 	* Se elimina una persona
