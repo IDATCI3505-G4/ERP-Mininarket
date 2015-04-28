@@ -36,6 +36,22 @@ class Producto extends CActiveRecord
 
 		return $dataProvider;
 	}
+
+	public function actualizarEstadoProducto($idProducto, $estadoProd){
+		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+
+		$producto = Producto::model()->findByPk($idProducto);
+
+		
+			$producto->estadoProd=$estadoProd;
+		
+			if(!$producto->save()){
+				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+			}
+		
+
+		return $resultado;
+	}
 /**
 *Se muestra los productos por codigo	obtenerProductoxId
 **/

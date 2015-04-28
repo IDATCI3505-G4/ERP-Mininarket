@@ -1,3 +1,87 @@
+// ====================================================================================
+// METODO PARA REACTIVAR UN PROVEEDOR
+// ====================================================================================
+$(document).on("click", ".activarProducto", function(e) {
+	var codProducto = $(this).attr('href');
+
+	bootbox.dialog({
+	  message: "Esta seguro de activar el Producto seleccionado?",
+	  title: "Activar Cliente",
+	  buttons: {
+	    success: {
+	      label: "Aceptar",
+	      className: "btn-success",
+	      callback: function() {
+	        waitingDialog.show('Reactivando Producto', {dialogSize: 'sm', progressType: 'success'});
+			jQuery.ajax({
+				url: 'index.php?r=almacen/AjaxActualizarEstadoProducto',
+				type: "POST",
+				data : {idProducto: codProducto,estadoProd:1},
+				success: function(resp){
+					console.log(resp);
+					location.reload();
+				}
+			}).done(function(ev){
+				waitingDialog.hide();
+			});
+	      }
+	    },
+	    danger: {
+	      label: "Cancelar",
+	      className: "btn-danger",
+	      callback: function() {
+	        //Example.show("uh oh, look out!");
+	      }
+	    }
+	  }
+	});
+	
+	e.preventDefault();
+});
+
+
+// ====================================================================================
+// METODO PARA ELIMINAR UN CLIENTE
+// ====================================================================================
+$(document).on("click", ".desactivarProducto", function(e) {
+	var codProducto = $(this).attr('href');
+
+	bootbox.dialog({
+	  message: "Esta seguro en suspender el Producto seleccionado?",
+	  title: "suspender Producto",
+	  buttons: {
+	    success: {
+	      label: "Aceptar",
+	      className: "btn-success",
+	      callback: function() {
+	        waitingDialog.show('Suspendiendo Producto', {dialogSize: 'sm', progressType: 'success'});
+			jQuery.ajax({
+				url: 'index.php?r=almacen/AjaxActualizarEstadoProducto',
+				type: "POST",
+				data : {idProducto: codProducto,estadoProd:0},
+				success: function(resp){
+					console.log(resp);
+					location.reload();
+				}
+			}).done(function(ev){
+				waitingDialog.hide();
+			});
+	      }
+	    },
+	    danger: {
+	      label: "Cancelar",
+	      className: "btn-danger",
+	      callback: function() {
+	        //Example.show("uh oh, look out!");
+	      }
+	    }
+	  }
+	});
+	
+	e.preventDefault();
+});
+
+
 
 $(document).on("click", "#btnNewProducto", function() {
 
@@ -165,46 +249,6 @@ e.preventDefault();
 
 
 
-// ====================================================================================
-// METODO PARA ELIMINAR UN PRODUCTO
-// ====================================================================================
-$(document).on("click", ".eliminarProducto", function(e) {
-	var codProducto = $(this).attr('href');
-
-	bootbox.dialog({
-	  message: "¿Esta seguro en eliminar el Producto seleccionado?",
-	  title: "Eliminar Producto",
-	  buttons: {
-	    success: {
-	      label: "Aceptar",
-	      className: "btn-success",
-	      callback: function() {
-	        waitingDialog.show('Eliminando Producto', {dialogSize: 'sm', progressType: 'warning'});
-			jQuery.ajax({
-				url: 'index.php?r=almacen/AjaxEliminarProducto',
-				type: "POST",
-				data : {idProducto: codProducto},
-				success: function(resp){
-					console.log(resp);
-					location.reload();
-				}
-			}).done(function(ev){
-				waitingDialog.hide();
-			});
-	      }
-	    },
-	    danger: {
-	      label: "Cancelar",
-	      className: "btn-danger",
-	      callback: function() {
-	        //Example.show("uh oh, look out!");
-	      }
-	    }
-	  }
-	});
-	
-	e.preventDefault();
-});
 
 // ====================================================================================
 // METODO PARA VER Llenar Marcas

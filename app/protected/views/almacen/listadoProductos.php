@@ -65,8 +65,8 @@ $this->breadcrumbs=array(
                        ),
                       array(
                         'class'=>'CButtonColumn',
-                        'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}',
-                        //'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}{activar}',
+                        //'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}',
+                        'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}{activar}',
                         'buttons'=>array(
                             'visualizar' => array(
                                 'label'=>'Ver más información',
@@ -85,21 +85,21 @@ $this->breadcrumbs=array(
                                 //'click'=>'function(){alert("Going down!");}',
                             ),
                             'eliminar' => array(
-                                'label'=>'Eliminar Producto',
+                                'label'=>'Suspender Producto',
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/delete_16x16.png',
-                                'options'=>array('class'=>'eliminarProducto'),
+                                'options'=>array('class'=>'desactivarProducto'),
                                 'url'=>'$data->idProducto',
-                                //'visible'=>'$data->stado == V',
+                                'visible'=>'$data->estadoProd == 1',
                                 //'click'=>'function(){alert("Going down!");}',
-                            ),/*
+                            ),
                             'activar' => array(
                                 'label'=>'Activar Producto',
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/ok_16x16.png',
-                                'options'=>array('class'=>'sis-activar'),
+                                'options'=>array('class'=>'activarProducto'),
                                 'url'=>'$data->idProducto',
-                                //'visible'=>'$data->stado == C',
+                                'visible'=>'$data->estadoProd == 0',
                                 //'click'=>'function(){alert("Going down!");}',
-                            ),*/
+                            ),
                         ),
                         'htmlOptions'=>array('style'=>'white-space:nowrap;text-align:center;'),
                       ),

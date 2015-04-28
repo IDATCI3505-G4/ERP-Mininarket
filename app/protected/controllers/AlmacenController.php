@@ -1,6 +1,15 @@
 <?php
 class AlmacenController extends Controller{
 
+public function actionAjaxActualizarEstadoProducto(){
+		$idProducto = $_POST['idProducto'];
+		$estadoProd = $_POST['estadoProd'];
+
+		$respuesta = Producto::model()->actualizarEstadoProducto($idProducto, $estadoProd);
+
+		header('Content-Type: application/json; charset="UTF-8"');
+    	echo CJSON::encode(array('output'=>$respuesta));
+	}
 public function actionAjaxListarMarcas(){
 	
 		
@@ -10,6 +19,7 @@ public function actionAjaxListarMarcas(){
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode($marcas);
 }
+
 public function actionAjaxListarCategorias(){
 	
 		
