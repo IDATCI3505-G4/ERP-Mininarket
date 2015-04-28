@@ -1,6 +1,3 @@
-$("#provincias").change(function() {
-  
-});
 
 $(document).on("click", "#btnNewProducto", function() {
 
@@ -11,7 +8,7 @@ $(document).on("click", "#btnNewProducto", function() {
                 $comboMarcas.empty();
                 //console.log(marcas);
                 // iteramos a través del arreglo de ciudades
-                $comboMarcas.append("<option>Seleccione Marca</option>");
+                $comboMarcas.append("<option value='no'>Seleccione Marca</option>");
                 $.each(marcas, function(index, marca) {
                     // agregamos opciones al combo
                     $comboMarcas.append("<option value="+marca.idMarca+">" + marca.nomMarca + "</option>");
@@ -22,7 +19,7 @@ $(document).on("click", "#btnNewProducto", function() {
                 var $comboCategorias= $(".Lista_Caterorias");
 
                 $comboCategorias.empty();
-              	$comboCategorias.append("<option>Seleccione Categoría</option>");
+              	$comboCategorias.append("<option value='no'>Seleccione Categoría</option>");
                 $.each(categorias, function(index, categoria) {
                     // agregamos opciones al combo
                     $comboCategorias.append("<option value="+categoria.idCategoria+">" + categoria.nomCategoria + "</option>");
@@ -37,23 +34,79 @@ $(document).on("click", "#btnNewProducto", function() {
 jQuery.fn.reset = function () {
   $(this).each (function() { this.reset(); });
 }
+jQuery.fn.no_selecteds = function () {
 
-//twitter bootstrap script
+   $(this).change(function () {
+    if ($(this).val().trim() !== 'no') {
+       $(this).removeClass('no_selected');
+    }
+    if ($(this).val().trim() === 'no') {
+       $(this).addClass('no_selected');
+    }
+ });
+}
+
+jQuery.fn.no_select = function () {   
+ 
+    if ($(this).val().trim() === 'no') {
+       $(this).addClass('no_selected');
+    }
+
+}
+
+$('#add_tipoProd').no_selecteds();
+$('#add_Lista_Caterorias').no_selecteds();
+$('#add_Lista_Marcas').no_selecteds();
+ /*$('#add_tipoProd').change(function () {
+    if ($('#add_tipoProd').val().trim() !== 'no') {
+       $('#add_tipoProd').removeClass('no_selected');
+    }
+    if ($('#add_tipoProd').val().trim() === 'no') {
+       $('#add_tipoProd').addClass('no_selected');
+    }
+ });*/
+
+
+
   $("button#btnRegistrarProducto").click(function(e){
-var desc_Prod =$("#add_desc_Prod").val();
+  	   if ($('#add_tipoProd').val().trim() === 'no') {
+       $('#add_tipoProd').addClass('no_selected');
+    }else{
+
+    	var desc_Prod =$("#add_desc_Prod").val();
 var presentacion =$("#add_presentacion").val();
 var tipoProd =$("#add_tipoProd").val();
 var stock =$("#add_stock").val();
 var idMarca =$("#add_Lista_Marcas").val();
 var idCategoria =$("#add_Lista_Caterorias").val();
 
+
         $.ajax({
             type: "POST",
       url: "index.php?r=almacen/AjaxAgregarProducto",
       data: {desc_Prod:desc_Prod,presentacion:presentacion,tipoProd:tipoProd,stock:stock,idMarca:idMarca,idCategoria:idCategoria},
-            success: function(msg){
+            success: function(resp){
+            	data = resp.output;
+            	console.log(data);
+            	if(data.valor==1){
+				 $("#message_save_Producto").show('easy', function() {
+				 		$(this).addClass('alert-success');
+				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+				});
+            	}
+            	if(data.valor==0){
+
+            		 $("#message_save_Producto").show('easy', function() {
+            		 	$(this).removeClass('alert-success');
+            		 	$(this).addClass('alert-danger');
+				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+				});
+            	}
+
+           
             
-            $("#ModalnewProducto").modal('hide');
+            //$("#ModalnewProducto").modal('hide');
+
 
 
 
@@ -62,6 +115,8 @@ var idCategoria =$("#add_Lista_Caterorias").val();
         alert("failure");
         }
             });
+    }
+
 e.preventDefault();
 
   });
@@ -72,16 +127,6 @@ e.preventDefault();
 // ====================================================================================
 // METODO PARA AGREGAR UN PRODUCTO
 // ====================================================================================
-$(document).on("click", "#AgregarProducto", function(e) {
-
-	 $.ajax({
-				   url: 'index.php?r=almacen/listadoProductos',
-				    type: 'POST',
-				    data: {update:"now"},
-				    success: function(){ $.fn.yiiGridView.update('item-grid'); }
-				   });
-	 e.preventDefault();
-});
 
 
 

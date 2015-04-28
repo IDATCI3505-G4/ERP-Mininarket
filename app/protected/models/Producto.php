@@ -77,7 +77,7 @@ public function obtenerProductoxId($idProducto){
 		return $resultado;
 	}
 	public function agregarProducto($desc_Prod,$presentacion,$tipoProd,$stock,$idMarca,$idCategoria){
-		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+		$resultado = array('valor'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$producto=new Producto;
 
@@ -92,7 +92,7 @@ public function obtenerProductoxId($idProducto){
 			$producto->idCategoria=$idCategoria;
 
 			if(!$producto->save()){
-				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+				$resultado = array('valor'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
 		
 

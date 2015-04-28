@@ -138,9 +138,8 @@ $this->breadcrumbs=array(
         <h4 class="modal-title" id="modalTitle">Nuevo Producto</h4>
       </div>
       <!-- /Cabecera -->
- <div class="alert alert-dismissable alert-success" id="message_save_Producto" style="display: none;">
-    <button type="button" class="close" data-dismiss="alert" >x</button>
-    <strong></strong>
+ <div class="alert alert-dismissable " id="message_save_Producto" style="display: none;">
+    
 </div>
 <div class="modal-body">
   <form id="newProductoForm" method="post"  class="form-horizontal"   target="" >                  
@@ -160,14 +159,17 @@ $this->breadcrumbs=array(
      <div class="form-group">
       <label class="col-lg-4 control-label">Tipo de Producto:</label>
        <div class="col-lg-7">
+
         <select class="form-control" name="add_tipoProd" id="add_tipoProd">
+          
+          <option value="no">Seleccione un tipo de Producto</option>
           <option value="0">Perecible</option>
-          <option value="1">No Perecible</option>
+          <option value="1" >No Perecible</option>
         </select>
       </div>
     </div>
     
-    <div class="form-group">
+    <div class="form-group has-succes">
       <label class="col-lg-4 control-label">Marca:</label>
       <div class="col-lg-7">
         <select class="form-control Lista_Marcas" name="add_Lista_Marcas" id="add_Lista_Marcas"></select>
@@ -182,7 +184,7 @@ $this->breadcrumbs=array(
      <div class="form-group">
       <label class="col-lg-4 control-label">Stock:</label>
       <div class="col-lg-7">
-        <input type="number" class="form-control" id="add_stock"   name="add_stock" >
+        <input type="number" min="1" class="form-control" id="add_stock"   name="add_stock" >
       </div>
     </div> 
    
@@ -229,3 +231,9 @@ $this->breadcrumbs=array(
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+        <style>
+      .no_selected{
+        border:2px solid red;
+        font-weight: bold;
+      }
+        </style>

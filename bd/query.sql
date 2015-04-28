@@ -1,4 +1,4 @@
-create table Producto(
+	create table Producto(
 idProducto int AUTO_INCREMENT PRIMARY KEY,
 desc_Prod varchar(100) NOT NULL,
 presentacion varchar(20) NOT NULL,
