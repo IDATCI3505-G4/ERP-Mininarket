@@ -221,12 +221,12 @@ $this->breadcrumbs=array(
         <h4 class="modal-title" id="modalTitle">Actualizar Producto</h4>
       </div>
       <!-- /Cabecera -->
- <div class="alert alert-dismissable " id="message_save_Producto" style="display: none;">
+ <div class="alert alert-dismissable " id="message_upd_Producto" style="display: none;">
     
 </div>
 <div class="modal-body">
   <form id="updProductoForm" method="post"  class="form-horizontal"   target="" >                  
-   
+   <input type="hidden" class="form-control" id="upd_cod_Prod"   name="upd_cod_Prod"  >
     <div class="form-group">
       <label class="col-lg-4 control-label">Descripción:</label>
       <div class="col-lg-7">
@@ -286,7 +286,7 @@ $this->breadcrumbs=array(
 
     <div class="form-group">
       <div class="col-md-5 col-md-offset-3">
-        <button class="btn btn-primary" id="btnRegistrarProducto">Registrar</button>
+        <button class="btn btn-primary" id="btnActualizarProducto">Registrar</button>
         <button   id="cerrarmodal_upd" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
         >Cerrar</button>
       </div>

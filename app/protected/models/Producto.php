@@ -60,27 +60,23 @@ public function obtenerProductoxId($idProducto){
 	/**
 	* Se elimina una persona
 	**/
-	public function actualizarProducto($idProducto,$idProveedor,$descripcion,$precioCompra,$precioVenta,$stock,$fechaVencimiento,$stado){
-		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+	public function actualizarProducto($idProducto,$desc_Prod,$presentacion,$tipoProd,$stock,$idMarca,$idCategoria,$estadoProd){
+		$resultado = array('valorupd'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$producto = Producto::model()->findByPk($idProducto);
 
 		if(count($producto)>0){
-	
-			$producto->idProducto=$idProducto;
-			$producto->idProveedor=$idProveedor;
-			$producto->Descripcion=$descripcion;
-			$producto->precioCompra=$precioCompra;
-			$producto->precioVenta=$precioVenta;
-			$producto->stock=$stock;
-			$producto->fechaVencimiento=$fechaVencimiento;
-			$producto->stado=$stado;
+	$producto->desc_Prod=$desc_Prod;
+	$producto->presentacion=$presentacion;
+	$producto->tipoProd=$tipoProd;
+	$producto->stock=$stock;
+	$producto->idMarca=$idMarca;
+	$producto->idCategoria=$idCategoria;
+	$producto->estadoProd=$estadoProd;		
 		
 			if(!$producto->save()){
-				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+				$resultado = array('valorupd'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
-		}else{
-			$resultado = array('data'=>0, 'message'=>'No se pudo encontrar a la persona seleccionada. ');
 		}
 
 		return $resultado;

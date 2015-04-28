@@ -50,18 +50,19 @@ public function actionAjaxListarCategorias(){
 
 	public function actionAjaxActualizarProducto(){
 
+		$idProducto=$_POST['idProducto'];
+      	$desc_Prod=$_POST['desc_Prod'];
+      	$presentacion=$_POST['presentacion'];
+      	$tipoProd=$_POST['tipoProd'];
+      	$stock=$_POST['stock'];
+      	$idMarca=$_POST['idMarca'];
+      	$idCategoria=$_POST['idCategoria'];
+      	$estadoProd=$_POST['estadoProd'];
 
-		$idProducto = $_POST['idProducto'];
-		$idProveedor = $_POST['idProveedor'];
-		$descripcion = $_POST['descripcion'];
-		$precioCompra = $_POST['precioCompra'];
-		$precioVenta = $_POST['precioVenta'];
-		$stock = $_POST['stock'];
-		$fechaVencimiento = $_POST['fechaVencimiento'];
-		$stado = $_POST['stado'];
 
 
-		$respuesta = Producto::model()->actualizarProducto($idProducto,$idProveedor,$descripcion,$precioCompra,$precioVenta,$stock,$fechaVencimiento,$stado);
+
+		$respuesta = Producto::model()->actualizarProducto($idProducto,$desc_Prod,$presentacion,$tipoProd,$stock,$idMarca,$idCategoria,$estadoProd);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
