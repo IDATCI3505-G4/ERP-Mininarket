@@ -8,7 +8,7 @@ $(document).on("click", "#btnNewProducto", function() {
                 $comboMarcas.empty();
                 //console.log(marcas);
                 // iteramos a través del arreglo de ciudades
-                $comboMarcas.append("<option value='no'>Seleccione Marca</option>");
+                $comboMarcas.append("<option value=''>Seleccione Marca</option>");
                 $.each(marcas, function(index, marca) {
                     // agregamos opciones al combo
                     $comboMarcas.append("<option value="+marca.idMarca+">" + marca.nomMarca + "</option>");
@@ -19,7 +19,7 @@ $(document).on("click", "#btnNewProducto", function() {
                 var $comboCategorias= $(".Lista_Caterorias");
 
                 $comboCategorias.empty();
-              	$comboCategorias.append("<option value='no'>Seleccione Categoría</option>");
+              	$comboCategorias.append("<option value=''>Seleccione Categoría</option>");
                 $.each(categorias, function(index, categoria) {
                     // agregamos opciones al combo
                     $comboCategorias.append("<option value="+categoria.idCategoria+">" + categoria.nomCategoria + "</option>");
@@ -34,13 +34,19 @@ $(document).on("click", "#btnNewProducto", function() {
 jQuery.fn.reset = function () {
   $(this).each (function() { this.reset(); });
 }
+
+$('.close_modal').click(function(e) {
+	e.preventDefault();
+	$("#newProductoForm").reset();
+
+});
 jQuery.fn.no_selecteds = function () {
 
    $(this).change(function () {
-    if ($(this).val().trim() !== 'no') {
+    if ($(this).val().trim() !== '') {
        $(this).removeClass('no_selected');
     }
-    if ($(this).val().trim() === 'no') {
+    if ($(this).val().trim() === '') {
        $(this).addClass('no_selected');
     }
  });
@@ -48,11 +54,30 @@ jQuery.fn.no_selecteds = function () {
 
 jQuery.fn.no_select = function () {   
  
-    if ($(this).val().trim() === 'no') {
+    if ($(this).val().trim() === '') {
        $(this).addClass('no_selected');
     }
 
 }
+jQuery.fn.no_text = function () {   
+ 
+   
+    $(this).blur(function(e) {
+
+	if($(this).val().trim() === ''){
+		$(this).addClass('no_selected');
+	}else{
+		$(this).removeClass('no_selected');
+	}
+	
+});
+
+}
+
+$('#add_desc_Prod').no_text();
+$('#add_presentacion').no_text();
+$('#add_stock').no_text();
+
 
 $('#add_tipoProd').no_selecteds();
 $('#add_Lista_Caterorias').no_selecteds();
@@ -69,11 +94,22 @@ $('#add_Lista_Marcas').no_selecteds();
 
 
   $("button#btnRegistrarProducto").click(function(e){
-  	   if ($('#add_tipoProd').val().trim() === 'no') {
-       $('#add_tipoProd').addClass('no_selected');
-    }else{
 
-    	var desc_Prod =$("#add_desc_Prod").val();
+  	if ($('#add_desc_Prod').val().trim()==='') {
+  		$('#add_desc_Prod').addClass('no_selected');
+  	}else if($('#add_presentacion').val().trim()===''){
+  		$('#add_presentacion').addClass('no_selected');
+  	}else if($('#add_stock').val().trim()==='' ){
+  		$('#add_stock').addClass('no_selected');
+  	}else if($('#add_tipoProd').val().trim()===''){
+$('#add_tipoProd').addClass('no_selected');
+  	}else if($('#add_Lista_Caterorias').val().trim()===''){
+$('#add_Lista_Caterorias').addClass('no_selected');
+  	}else if($('#add_Lista_Marcas').val().trim()===''){
+$('#add_Lista_Marcas').addClass('no_selected');
+  	}else{
+
+var desc_Prod =$("#add_desc_Prod").val();
 var presentacion =$("#add_presentacion").val();
 var tipoProd =$("#add_tipoProd").val();
 var stock =$("#add_stock").val();
@@ -93,6 +129,12 @@ var idCategoria =$("#add_Lista_Caterorias").val();
 				 		$(this).addClass('alert-success');
 				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
 				});
+				 
+				 setTimeout(function() {
+				 	$("#newProductoForm").reset();
+				 	$("#ModalnewProducto").modal('hide');
+				 	window.location.reload();
+				 }, 1000);
             	}
             	if(data.valor==0){
 
@@ -105,7 +147,7 @@ var idCategoria =$("#add_Lista_Caterorias").val();
 
            
             
-            //$("#ModalnewProducto").modal('hide');
+           
 
 
 
@@ -113,7 +155,7 @@ var idCategoria =$("#add_Lista_Caterorias").val();
             },
       error: function(){
         alert("failure");
-        }
+        },
             });
     }
 
@@ -338,7 +380,7 @@ $(document).on("click", ".verProducto", function(e) {
 		             '</div> ' +		           
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">Tipo de Producto :</label> ' +
-		             '<div class="col-md-7"><span class="help-block">'+(data.ide_estado==1?"No Perecible":"Perecible")+'</span></div> ' +
+		             '<div class="col-md-7"><span class="help-block">'+(data.tipoProd==1?"No Perecible":"Perecible")+'</span></div> ' +
 		             '</div> ' +
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">Stock :</label> ' +
@@ -358,7 +400,7 @@ $(document).on("click", ".verProducto", function(e) {
 		             '</div> ' +
 		             '<div class="form-group"> ' +
 		             '<label class="col-md-5 control-label" for="name">Estado :</label> ' +
-		             '<div class="col-md-7"><span class="help-block">'+(data.ide_estado==1?"Vigente":"Caducado")+'</span></div> ' +
+		             '<div class="col-md-7"><span class="help-block">'+(data.estadoProd==1?"En Cátalogo":"Suspendido")+'</span></div> ' +
 		             '</div> ' +
 
 		             '</form>'+
