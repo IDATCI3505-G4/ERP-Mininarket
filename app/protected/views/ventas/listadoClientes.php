@@ -31,32 +31,32 @@ $this->breadcrumbs=array(
                     'columns'=>array(
                       array(
                            'name'=>'Nombre o RasonSocial',
-                           'value'=>'$data->RazonSocial',
+                           'value'=>'$data->RazSoc_Cli',
                        ),
                       array(
                            'name'=>'tipoPersona',
-                           'value'=>'($data->tipoPersona==1)?"JURIDICA":"NATURAL"',
+                           'value'=>'($data->tipoPersona_Cli==1)?"JURIDICA":"NATURAL"',
                        ),
                       array(
                            'name'=>'RUC',
-                           'value'=>'$data->ruc',
+                           'value'=>'$data->ruc_Cli',
                        ),array(
                            'name'=>'direccion',
-                           'value'=>'$data->direccion',
+                           'value'=>'$data->direccion_Cli',
                        ),array(
                            'name'=>'telefono',
-                           'value'=>'$data->telefono',
+                           'value'=>'$data->telefono_Cli',
                        ),array(
                            'name'=>'email',
-                           'value'=>'$data->email',
+                           'value'=>'$data->email_Cli',
                        ),array(
                            'name'=>'fechaInsc',
-                           'value'=>'$data->fechaInsc',
+                           'value'=>'$data->fec_reg_Cli',
                        ),
-                       /*array(
+                       array(
                            'name'=>'stado',
-                           'value'=>'$data->stado',
-                       ),*/
+                           'value'=>'($data->estado_Cli==1)?"Activo":"Inactivo"',
+                       ),
                       array(
                         'class'=>'CButtonColumn',
                         'template'=>'{visualizar}&nbsp;&nbsp;&nbsp;{editar}&nbsp;&nbsp;&nbsp;{eliminar}{activar}',
@@ -82,7 +82,7 @@ $this->breadcrumbs=array(
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/delete_16x16.png',
                                 'options'=>array('class'=>'desactivarCliente'),
                                 'url'=>'$data->idCliente',
-                                'visible'=>'$data->stado == 1',
+                                'visible'=>'$data->estado_Cli == 1',
                                 //'click'=>'function(){alert("Going down!");}',
                             ),
                             'activar' => array(
@@ -90,7 +90,7 @@ $this->breadcrumbs=array(
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/ok_16x16.png',
                                 'options'=>array('class'=>'activarCliente'),
                                 'url'=>'$data->idCliente',
-                                'visible'=>'$data->stado == 0',
+                                'visible'=>'$data->estado_Cli == 0',
                                 //'click'=>'function(){alert("Going down!");}',
                             ),
                         ),

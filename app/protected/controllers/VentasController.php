@@ -59,9 +59,9 @@ public function actionAjaxAgregarCliente(){
 
 public function actionAjaxActualizarEstadocliente(){
 		$idCliente = $_POST['idCliente'];
-		$stado = $_POST['stado'];
+		$estado_Cli = $_POST['estado_Cli'];
 
-		$respuesta = cliente::model()->actualizarEstadoCliente($idCliente, $stado);
+		$respuesta = Cliente::model()->actualizarEstadoCliente($idCliente, $estado_Cli);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));

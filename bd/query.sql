@@ -1,4 +1,16 @@
-	create table Producto(
+create table Cliente(
+idCliente int AUTO_INCREMENT primary key,
+RazSoc_Cli varchar(250) not null,
+tipoPersona_Cli char(1) not null,
+ruc_Cli char(11) not null,
+direccion_Cli varchar(150) not null,
+telefono_Cli char(9) not null,
+email_Cli varchar(50),
+fec_reg_Cli TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+estado_Cli char(1) not null DEFAULT '1'
+);
+
+create table Producto(
 idProducto int AUTO_INCREMENT PRIMARY KEY,
 desc_Prod varchar(100) NOT NULL,
 presentacion varchar(20) NOT NULL,
@@ -10,18 +22,14 @@ fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 estadoProd char(1) not null DEFAULT '1'
 );
 
-
 create table Marca(
 idMarca int AUTO_INCREMENT PRIMARY KEY,
 nomMarca varchar(100) NOT NULL
 );
-
 create table Categoria(
 idCategoria int AUTO_INCREMENT PRIMARY KEY,
 nomCategoria varchar(50) NOT NULL
 );
-
-
 
 alter table Producto add CONSTRAINT fk_producto_categoria FOREIGN KEY (idCategoria) references Categoria(idCategoria);
 alter table Producto add CONSTRAINT fk_producto_marca FOREIGN KEY (idMarca) references Marca(idMarca);
