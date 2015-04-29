@@ -24,7 +24,7 @@ class Producto extends CActiveRecord
 	/**
 	* Se listan las personas por catalogo
 	**/
-	public function listadoProductos(){
+	/*public function listadoProductos(){
 
 
 		$dataProvider=new CActiveDataProvider('Producto', array(
@@ -35,7 +35,7 @@ class Producto extends CActiveRecord
 		));
 
 		return $dataProvider;
-	}
+	}*/
 
 	public function actualizarEstadoProducto($idProducto, $estadoProd){
 		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');

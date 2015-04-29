@@ -12,26 +12,32 @@
  */
 class Categoria extends CActiveRecord
 {
-
 	public function agregarCategoria($nomCategoria){
 		$resultado = array('valor'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$categoria=new Categoria;
 
+		$categoria->nomCategoria=$nomCategoria;
+		$sql="select * from Categoria where nomCategoria='".$nomCategoria."'";
+		if (count(Yii::app()->db->createCommand($sql)->queryAll())>0 ) {
+			$resultado = array('valor'=>0, 'message'=>'La Categoria ya Existe');
+		}
 		
-	
-		
-			$categoria->nomCategoria=$nomCategoria;
-			
-
+		if(count(Yii::app()->db->createCommand($sql)->queryAll())<1 ){			
 			if(!$categoria->save()){
+				
 				$resultado = array('valor'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
+		}
+
+	
+		
+			
+		
 		
 
 		return $resultado;
 	}
-
 	/**
 	 * @return string the associated database table name
 	 */

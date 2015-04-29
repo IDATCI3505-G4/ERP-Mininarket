@@ -146,7 +146,7 @@ $this->breadcrumbs=array(
   <form id="newMarcaForm" method="post"  class="form-horizontal"   target="" >                  
    
     <div class="form-group">
-      <label class="col-lg-4 control-label">Nombre de la Categoria:</label>
+      <label class="col-lg-4 control-label">Nombre de la Marca:</label>
       <div class="col-lg-7">
         <input type="text" class="form-control" id="add_nomMarca"   name="add_nomMarca" placeholder="Nombre de la Marca"  >
       </div>
@@ -263,7 +263,7 @@ $this->breadcrumbs=array(
         <select class="form-control Lista_Marcas" name="add_Lista_Marcas" id="add_Lista_Marcas"></select>
       </div>
       <div class="col-lg-1">
-        <button type="button" class="btn btn-primary" id="new_Marca" data-target="#ModalnewMarca"><i class="fa fa-plus"></i></button>
+        <button type="button" class="btn btn-primary new_Marca" id="new_Marca" data-target="#ModalnewMarca"><i class="fa fa-plus"></i></button>
       </div>
     </div>
     <div class="form-group">
@@ -272,7 +272,7 @@ $this->breadcrumbs=array(
         <select class="form-control Lista_Caterorias" name="add_Lista_Caterorias" id="add_Lista_Caterorias"></select>
       </div>
       <div class="col-lg-1">
-        <button type="button" class="btn btn-primary" id="new_Category" data-target="#ModalnewCategory"><i class="fa fa-plus"></i></button>
+        <button type="button" class="btn btn-primary new_Category" id="new_Category" data-target="#ModalnewCategory"><i class="fa fa-plus"></i></button>
       </div>
     </div>
      <div class="form-group">
@@ -347,14 +347,20 @@ $this->breadcrumbs=array(
     
     <div class="form-group has-succes">
       <label class="col-lg-4 control-label">Marca:</label>
-      <div class="col-lg-7">
-        <select class="form-control Lista_Marcas_upd" name="upd_Lista_Marcas" id="upd_Lista_Marcas"></select>
+      <div class="col-lg-5">
+        <select class="form-control Lista_Marcas" name="upd_Lista_Marcas" id="upd_Lista_Marcas"></select>
+      </div>
+      <div class="col-lg-1">
+        <button type="button" class="btn btn-primary new_Marca" id="new_Marca" data-target="#ModalnewMarca"><i class="fa fa-plus"></i></button>
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-4 control-label">Categoría:</label>
-      <div class="col-lg-7">
-        <select class="form-control Lista_Caterorias_upd" name="upd_Lista_Caterorias" id="upd_Lista_Caterorias"></select>
+      <div class="col-lg-5">
+        <select class="form-control Lista_Caterorias" name="upd_Lista_Caterorias" id="upd_Lista_Caterorias"></select>
+      </div>
+      <div class="col-lg-1">
+        <button type="button" class="btn btn-primary new_Category" id="new_Category" data-target="#ModalnewCategory"><i class="fa fa-plus"></i></button>
       </div>
     </div>
      <div class="form-group">

@@ -17,17 +17,25 @@ class Marca extends CActiveRecord
 
 		$marca=new Marca;	
 	
-		
-			$marca->nomMarca=$nomMarca;
+		$marca->nomMarca=$nomMarca;
 			
+		$sql="select * from Marca where nomMarca='".$nomMarca."'";
+		if (count(Yii::app()->db->createCommand($sql)->queryAll())>0 ) {
+			$resultado = array('valor'=>0, 'message'=>'La Marca ya Existe');
+		}
 
+		if(count(Yii::app()->db->createCommand($sql)->queryAll())<1 ){			
 			if(!$marca->save()){
+				
 				$resultado = array('valor'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
+		}
+
+			
 		
 
 		return $resultado;
-	}
+	}	
 	/**
 	 * @return string the associated database table name
 	 */

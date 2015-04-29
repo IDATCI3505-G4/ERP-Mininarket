@@ -1,4 +1,4 @@
-$("#new_Marca").click(function(event) {
+$(".new_Marca").click(function(event) {
 	$('#ModalnewMarca').modal('show');
 	$('#ModalnewMarca').css('z-index', '10000');
 });
@@ -53,7 +53,7 @@ e.preventDefault();
 
   });
 
-$("#new_Category").click(function(event) {
+$(".new_Category").click(function(event) {
 	$('#ModalnewCategoria').modal('show');
 	$('#ModalnewCategoria').css('z-index', '10000');
 });
@@ -73,9 +73,16 @@ var nomCategoria =$("#add_nomCategoria").val();
             	if(data.valor==1){
 				 $("#message_save_Categoria").show('easy', function() {
 				 		$(this).addClass('alert-success');
-				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+				        $(this).html('<div class="btn-message"><strong>'+data.message+'</strong></div>')
+
 				});				 
 				 setTimeout(function() {
+				 	 $("#message_save_Categoria").hide('fast', function() {
+				 		$(this).removeClass('alert-success');
+				 		$('div').remove('.btn-message');				       
+
+					});	
+
 				 	$("#newCategoiraForm").reset();
 
 				 	$("#ModalnewCategoria").modal('hide');
@@ -92,11 +99,19 @@ var nomCategoria =$("#add_nomCategoria").val();
 				 }, 1000);
             	}
             	if(data.valor==0){
-            		 $("#message_save_categoria").show('easy', function() {
-            		 	$(this).removeClass('alert-success');
-            		 	$(this).addClass('alert-danger');
-				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+            		 $("#message_save_Categoria").show('easy', function() {
+            		             		 	$(this).addClass('alert-danger');
+
+				            	$(this).html('<div class="btn-message"><strong>'+data.message+'</strong></div>')
 				});
+            		 	setTimeout(function(){
+            		 		 $("#message_save_Categoria").hide('fast', function() {
+				 		$(this).removeClass('alert-success');
+				 		$(this).removeClass('alert-danger');
+				 		$('div').remove('.btn-message');				       
+
+					});	
+            		 	},3000);
             	}
             },
       error: function(){
@@ -376,7 +391,7 @@ e.preventDefault();
 jQuery(document).ready(function() {
    $.post("index.php?r=almacen/AjaxListarMarcas", function(marcas) {
                 // obtenemos el combo de ciudades
-                var $comboMarcas= $(".Lista_Marcas_upd");
+                var $comboMarcas= $(".Lista_Marcas");
                 // lo vaciamos
                 $comboMarcas.empty();
                 //console.log(marcas);
@@ -389,7 +404,7 @@ jQuery(document).ready(function() {
             }, 'json');     
 
              $.post("index.php?r=almacen/AjaxListarCategorias", function(categorias) {
-                var $comboCategorias= $(".Lista_Caterorias_upd");
+                var $comboCategorias= $(".Lista_Caterorias");
 
                 $comboCategorias.empty();
               	$comboCategorias.append("<option value=''>Seleccione Categoría</option>");
