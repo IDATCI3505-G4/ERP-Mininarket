@@ -166,22 +166,41 @@ $this->breadcrumbs=array(
 <input id="add_ruc_Prov" name="add_ruc_Prov" type="text" placeholder="RUC" class="form-control input-md" value="">
 </div>
 </div>
+
+
 <div class="form-group">
-<label class="col-md-4 control-label" for="direccion">direccion:</label>
-<div class="col-md-7">
-<input id="add_direccion_Prov" name="add_direccion_Prov" type="text" placeholder="direccion" class="form-control input-md" value="">
+<label class="col-lg-4 control-label">Dirección:</label>
+<div class="col-lg-7">
+<div class="input-group">
+<div class="input-group-addon">
+<i class="fa fa-location-arrow"></i>
+</div>
+<input type="text" name="add_direccion_Prov" id="add_direccion_Prov" class="form-control" placeholder="Dirección"/>
 </div>
 </div>
+</div>
+
+
 <div class="form-group">
-<label class="col-md-4 control-label" for="telefono_Cli">telefono:</label>
-<div class="col-md-7">
-<input id="add_telefono_Prov" name="add_telefono_Prov" type="text" placeholder="telefono" class="form-control input-md" value="">
+<label class="col-lg-4 control-label">Teléfono:</label>
+<div class="col-lg-7">
+<div class="input-group">
+<div class="input-group-addon">
+<i class="fa fa-phone"></i>
+</div>
+<input type="text" name="add_telefono_Prov" id="add_telefono_Prov" class="form-control" data-inputmask='"mask": "(99) 302-5902"' data-mask/>
 </div>
 </div>
+</div>
+
+
 <div class="form-group">
-<label class="col-md-4 control-label" for="email">email:</label>
-<div class="col-md-7">
-<input id="add_email_Prov" name="add_email_Prov" type="text" placeholder="email" class="form-control input-md" value="">
+<label class="col-lg-4 control-label">Correo electrónico:</label>
+<div class="col-lg-7">
+<div class="input-group">
+<span class="input-group-addon">@</span>
+<input type="text" name="add_email_Prov" id="add_email_Prov" class="form-control" placeholder="Correo electronico">
+</div>
 </div>
 </div>
   
@@ -189,9 +208,9 @@ $this->breadcrumbs=array(
 
     <div class="form-group">
       <div class="col-md-5 col-md-offset-3">
-        <button class="btn btn-primary" id="btnRegistrarProveedor">Registrar</button>
+        <button class="btn btn-primary" id="btnRegistrarProveedor"><i class="fa fa-floppy-o"></i> Registrar</button>
         <button   id="cerrarmodal" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
-        >Cerrar</button>
+        ><i class="fa fa-times"></i> Cerrar</button>
       </div>
     </div>
   </form><!-- /# usuarioForm -->
@@ -251,24 +270,46 @@ $this->breadcrumbs=array(
 <input id="upd_ruc_Prov" name="upd_ruc_Prov" type="text" placeholder="RUC" class="form-control input-md" value="">
 </div>
 </div>
+
 <div class="form-group">
-<label class="col-md-4 control-label" for="direccion">direccion:</label>
-<div class="col-md-7">
-<input id="upd_direccion_Prov" name="upd_direccion_Prov" type="text" placeholder="direccion" class="form-control input-md" value="">
+<label class="col-lg-4 control-label">Dirección:</label>
+<div class="col-lg-7">
+<div class="input-group">
+<div class="input-group-addon">
+<i class="fa fa-location-arrow"></i>
+</div>
+<input type="text" name="upd_direccion_Prov" id="upd_direccion_Prov" class="form-control" placeholder="Dirección"/>
 </div>
 </div>
+</div>
+
+
+
 <div class="form-group">
-<label class="col-md-4 control-label" for="telefono_Cli">telefono:</label>
-<div class="col-md-7">
-<input id="upd_telefono_Prov" name="upd_telefono_Prov" type="text" placeholder="telefono" class="form-control input-md" value="">
+<label class="col-lg-4 control-label">Teléfono:</label>
+<div class="col-lg-7">
+<div class="input-group">
+<div class="input-group-addon">
+<i class="fa fa-phone"></i>
+</div>
+<input type="text" name="upd_telefono_Prov" id="upd_telefono_Prov" class="form-control" data-inputmask='"mask": "(99) 302-5902"' data-mask/>
 </div>
 </div>
+</div>
+
+
+
 <div class="form-group">
-<label class="col-md-4 control-label" for="email">email:</label>
-<div class="col-md-7">
-<input id="upd_email_Prov" name="upd_email_Prov" type="text" placeholder="email" class="form-control input-md" value="">
+<label class="col-lg-4 control-label">Correo electrónico:</label>
+<div class="col-lg-7">
+<div class="input-group">
+<span class="input-group-addon">@</span>
+<input type="text" name="upd_email_Prov" id="upd_email_Prov" class="form-control" placeholder="Correo electronico">
 </div>
 </div>
+</div>
+
+
 <div class="form-group">
 <label class="col-lg-4 control-label">Estado:</label>
 <div class="col-lg-7">
@@ -283,9 +324,9 @@ $this->breadcrumbs=array(
 
     <div class="form-group">
       <div class="col-md-5 col-md-offset-3">
-        <button class="btn btn-primary" id="btnActualizarProveedor">Registrar</button>
+        <button class="btn btn-primary" id="btnActualizarProveedor"><i class="fa fa-floppy-o"></i> Registrar</button>
         <button   id="cerrarmodal" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
-        >Cerrar</button>
+        ><i class="fa fa-times"></i> Cerrar</button>
       </div>
     </div>
   </form><!-- /# usuarioForm -->
