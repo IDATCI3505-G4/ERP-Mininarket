@@ -1,4 +1,4 @@
-	create table Producto(
+﻿	create table Producto(
 idProducto int AUTO_INCREMENT PRIMARY KEY,
 desc_Prod varchar(100) NOT NULL,
 presentacion varchar(20) NOT NULL,
@@ -21,7 +21,30 @@ idCategoria int AUTO_INCREMENT PRIMARY KEY,
 nomCategoria varchar(50) NOT NULL
 );
 
+/* Categorias*/
+select * from producto
+insert into Categoria(nomCategoria) values('Helados');
+insert into Categoria(nomCategoria) values('Galletas');
+insert into Categoria(nomCategoria) values('Cereales');
+insert into Categoria(nomCategoria) values('Lacteos');
+insert into Categoria(nomCategoria) values('Bebidas');
+insert into Categoria(nomCategoria) values('Snacks');
+insert into Categoria(nomCategoria) values('Dulces');
+insert into Categoria(nomCategoria) values('Frutas');
+insert into Categoria(nomCategoria) values('Fideos');
+admin053jawkga
+/*Marcas*/
 
+insert into Marca(nomMarca) values('Gloria');
+insert into Marca(nomMarca) values('Nestle');
+insert into Marca(nomMarca) values('Karinto');
+insert into Marca(nomMarca) values('Donofrio');
+insert into Marca(nomMarca) values('Coca Cola');
+insert into Marca(nomMarca) values('Pura Vida');
+insert into Marca(nomMarca) values('San Luis');
+insert into Marca(nomMarca) values('Soda');
+insert into Marca(nomMarca) values('Inka Kola');
+insert into Marca(nomMarca) values('Lavaghi');
 
 alter table Producto add CONSTRAINT fk_producto_categoria FOREIGN KEY (idCategoria) references Categoria(idCategoria);
 alter table Producto add CONSTRAINT fk_producto_marca FOREIGN KEY (idMarca) references Marca(idMarca);
@@ -89,5 +112,6 @@ $dataProvider=new CActiveDataProvider('Sispersona', array(
                                         
 
 select * from sispersona;
+
 
 
