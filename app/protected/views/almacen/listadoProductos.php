@@ -130,6 +130,50 @@ $this->breadcrumbs=array(
 </div>
 
 <!-- Modal -->
+<div class="modal fade" id="ModalnewCategoria" tabindex="-1" role="dialog" aria-labelledby="myModalRegistrarCategoria" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Cabecera -->
+      <div class="modal-header">
+        <button type="button" class="close close_modal" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only ">Close</span></button>
+        <h4 class="modal-title" id="modalTitle">Agregar Categoria</h4>
+      </div>
+      <!-- /Cabecera -->
+ <div class="alert alert-dismissable " id="message_save_Categoria" style="display: none;">
+    
+</div>
+<div class="modal-body">
+  <form id="newCategoriaForm" method="post"  class="form-horizontal"   target="" >                  
+   
+    <div class="form-group">
+      <label class="col-lg-4 control-label">Nombre de la Categoria:</label>
+      <div class="col-lg-7">
+        <input type="text" class="form-control" id="add_nomCategoria"   name="add_nomCategoria" placeholder="Nombre de la Categoria"  >
+      </div>
+    </div>   
+ 
+   
+
+    <div class="form-group">
+      <div class="col-md-5 col-md-offset-3">
+        <button class="btn btn-primary" id="btnRegistrarCategoria">Registrar</button>
+        <button   id="cerrarmodal" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
+        >Cerrar</button>
+      </div>
+    </div>
+  </form><!-- /# usuarioForm -->
+
+</div><!-- /.modal-body -->
+
+     
+
+    </div><!-- /. modal-content -->
+  </div><!-- /. modal-dialog-->
+
+</div><!-- /#myModalEditarEmpleado -->
+
+
+<!-- Modal -->
 <div class="modal fade" id="ModalnewProducto" tabindex="-1" role="dialog" aria-labelledby="myModalRegistrarProducto" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -178,8 +222,11 @@ $this->breadcrumbs=array(
     </div>
     <div class="form-group">
       <label class="col-lg-4 control-label">Categoría:</label>
-      <div class="col-lg-7">
+      <div class="col-lg-5">
         <select class="form-control Lista_Caterorias" name="add_Lista_Caterorias" id="add_Lista_Caterorias"></select>
+      </div>
+      <div class="col-lg-1">
+        <button type="button" class="btn btn-primary" id="new_Category" data-target="#ModalnewCategory"><i class="fa fa-plus"></i></button>
       </div>
     </div>
      <div class="form-group">

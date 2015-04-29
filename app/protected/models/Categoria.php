@@ -12,6 +12,26 @@
  */
 class Categoria extends CActiveRecord
 {
+
+	public function agregarCategoria($nomCategoria){
+		$resultado = array('valor'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+
+		$categoria=new Categoria;
+
+		
+	
+		
+			$categoria->nomCategoria=$nomCategoria;
+			
+
+			if(!$categoria->save()){
+				$resultado = array('valor'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+			}
+		
+
+		return $resultado;
+	}
+
 	/**
 	 * @return string the associated database table name
 	 */
