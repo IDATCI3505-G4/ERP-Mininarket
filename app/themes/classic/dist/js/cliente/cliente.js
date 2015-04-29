@@ -46,6 +46,16 @@ var direccion_Cli =$("#upd_direccion_Cli").val();
 var telefono_Cli =$("#upd_telefono_Cli").val();
 var email_Cli =$("#upd_email_Cli").val();
 var estado_Cli;
+if ($('#upd_RazSoc_Cli').val().trim()==='' || $('#upd_tipoPersona_Cli').val().trim()==='' ||$('#upd_ruc_Cli').val().trim()===''|| $('#upd_direccion_Cli').val().trim()==='' || $('#upd_telefono_Cli').val().trim()==='' || $('#upd_email_Cli').val().trim()==='') {
+  		
+  		$('#upd_RazSoc_Cli').no_select();  	
+  		$('#upd_tipoPersona_Cli').no_select();
+      $('#upd_ruc_Cli').no_select(); 
+      $('#upd_direccion_Cli').no_select(); 
+      $('#upd_telefono_Cli').no_select(); 
+      $('#upd_email_Cli').no_select();    
+  	}else{
+
 if($("#upd_estado_Cli").is(':checked')) {
 			estado_Cli=1;
 		} else {
@@ -92,12 +102,19 @@ if($("#upd_estado_Cli").is(':checked')) {
         alert("failure");
         },
             });
-   
+   }  
+   // end ELSE
 e.preventDefault();
 
   });
 
+jQuery.fn.no_select = function () {   
+ 
+    if ($(this).val().trim() === '') {
+       $(this).addClass('no_selected');
+    }
 
+}
 
   $("button#btnRegistrarCliente").click(function(e){
 
@@ -109,7 +126,15 @@ var direccion_Cli =$("#add_direccion_Cli").val();
 var telefono_Cli =$("#add_telefono_Cli").val();
 var email_Cli =$("#add_email_Cli").val();
 
-
+if ($('#add_RazSoc_Cli').val().trim()==='' || $('#add_tipoPersona_Cli').val().trim()==='' ||$('#add_ruc_Cli').val().trim()===''|| $('#add_direccion_Cli').val().trim()==='' || $('#add_telefono_Cli').val().trim()==='' || $('#add_email_Cli').val().trim()==='') {
+  		
+  		$('#add_RazSoc_Cli').no_select();  	
+  		$('#add_tipoPersona_Cli').no_select();
+      $('#add_ruc_Cli').no_select(); 
+      $('#add_direccion_Cli').no_select(); 
+      $('#add_telefono_Cli').no_select(); 
+      $('#add_email_Cli').no_select();    
+  	}else{
         $.ajax({
             type: "POST",
       url: "index.php?r=ventas/AjaxAgregarCliente",
@@ -147,8 +172,7 @@ var email_Cli =$("#add_email_Cli").val();
         alert("failure");
         },
             });
-    
-
+    } //END ELSE 
 
   });
 
