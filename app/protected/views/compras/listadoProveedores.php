@@ -163,7 +163,7 @@ $this->breadcrumbs=array(
 <div class="form-group">
 <label class="col-md-4 control-label" for="RUC">RUC:</label>
 <div class="col-md-7">
-<input id="add_ruc_Prov" name="add_ruc_Prov" type="text" placeholder="RUC" class="form-control input-md" value="">
+<input id="add_ruc_Prov" name="add_ruc_Prov" type="text" placeholder="RUC" class="form-control input-md" value="" onkeydown="return validarNumeros(event)">
 </div>
 </div>
 
@@ -188,7 +188,7 @@ $this->breadcrumbs=array(
 <div class="input-group-addon">
 <i class="fa fa-phone"></i>
 </div>
-<input type="text" name="add_telefono_Prov" id="add_telefono_Prov" class="form-control" data-inputmask='"mask": "(99) 302-5902"' data-mask/>
+<input type="text" name="add_telefono_Prov" id="add_telefono_Prov" class="form-control" data-inputmask='"mask": "(99) 302-5902"' data-mask onkeydown="return validarNumeros(event)"/>
 </div>
 </div>
 </div>
@@ -267,7 +267,7 @@ $this->breadcrumbs=array(
 <div class="form-group">
 <label class="col-md-4 control-label" for="RUC">RUC:</label>
 <div class="col-md-7">
-<input id="upd_ruc_Prov" name="upd_ruc_Prov" type="text" placeholder="RUC" class="form-control input-md" value="">
+<input id="upd_ruc_Prov" name="upd_ruc_Prov" type="text" placeholder="RUC" class="form-control input-md" value="" onkeydown="return validarNumeros(event)">
 </div>
 </div>
 
@@ -292,7 +292,7 @@ $this->breadcrumbs=array(
 <div class="input-group-addon">
 <i class="fa fa-phone"></i>
 </div>
-<input type="text" name="upd_telefono_Prov" id="upd_telefono_Prov" class="form-control" data-inputmask='"mask": "(99) 302-5902"' data-mask/>
+<input type="text" name="upd_telefono_Prov" id="upd_telefono_Prov" class="form-control" data-inputmask='"mask": "(99) 302-5902"' data-mask onkeydown="return validarNumeros(event)"/>
 </div>
 </div>
 </div>

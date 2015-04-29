@@ -160,7 +160,7 @@ $this->breadcrumbs=array(
 <div class="form-group">
 <label class="col-md-4 control-label" for="RUC">RUC:</label>
 <div class="col-md-7">
-<input id="add_ruc_Cli" name="add_ruc_Cli" type="text" placeholder="RUC" class="form-control input-md" value="">
+<input id="add_ruc_Cli" name="add_ruc_Cli" type="text" placeholder="RUC" class="form-control input-md" value="" onkeydown="return validarNumeros(event)">
 </div>
 </div>
 <div class="form-group">
@@ -172,7 +172,7 @@ $this->breadcrumbs=array(
 <div class="form-group">
 <label class="col-md-4 control-label" for="telefono_Cli">telefono:</label>
 <div class="col-md-7">
-<input id="add_telefono_Cli" name="add_telefono_Cli" type="text" placeholder="telefono" class="form-control input-md" value="">
+<input id="add_telefono_Cli" name="add_telefono_Cli" type="text" placeholder="telefono" class="form-control input-md" value=""  onkeydown="return validarNumeros(event)">
 </div>
 </div>
 <div class="form-group">
@@ -245,7 +245,7 @@ $this->breadcrumbs=array(
 <div class="form-group">
 <label class="col-md-4 control-label" for="RUC">RUC:</label>
 <div class="col-md-7">
-<input id="upd_ruc_Cli" name="upd_ruc_Cli" type="text" placeholder="RUC" class="form-control input-md" value="">
+<input id="upd_ruc_Cli" name="upd_ruc_Cli" type="text" placeholder="RUC" class="form-control input-md" value="" onkeydown="return validarNumeros(event)">
 </div>
 </div>
 <div class="form-group">
@@ -257,7 +257,7 @@ $this->breadcrumbs=array(
 <div class="form-group">
 <label class="col-md-4 control-label" for="telefono_Cli">telefono:</label>
 <div class="col-md-7">
-<input id="upd_telefono_Cli" name="upd_telefono_Cli" type="text" placeholder="telefono" class="form-control input-md" value="">
+<input id="upd_telefono_Cli" name="upd_telefono_Cli" type="text" placeholder="telefono" class="form-control input-md" value="" onkeydown="return validarNumeros(event)">
 </div>
 </div>
 <div class="form-group">
