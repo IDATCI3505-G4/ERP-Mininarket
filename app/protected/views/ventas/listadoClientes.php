@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
     	<h3 class='box-title'><i class="fa fa-users"></i> Listado de Clientes</h3>
     </div>
     <div class='box-body'>
-     <button type="button" class="btn btn-default" id="btnNewCliente" data-toggle="modal" data-target="#ModalnewCliente" ><i class="fa fa-plus "></i> Agregar Producto</button>
+     <button type="button" class="btn btn-default" id="btnNewCliente" data-toggle="modal" data-target="#ModalnewCliente" ><i class="fa fa-plus "></i> Agregar Cliente</button>
       
     	<?php
                   $this->widget('zii.widgets.grid.CGridView', array(
@@ -138,7 +138,7 @@ $this->breadcrumbs=array(
     
 </div>
 <div class="modal-body">
-<form id="newProductoForm" method="post"  class="form-horizontal"   target="" >                  
+<form id="newClienteForm" method="post"  class="form-horizontal"   target="" >                  
 <div class="form-group">
 <label class="col-md-4 control-label" for="RazSoc_Cli">Nombre o Razón Social:</label>
 <div class="col-lg-7">

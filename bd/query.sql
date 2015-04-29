@@ -10,6 +10,18 @@ fec_reg_Cli TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 estado_Cli char(1) not null DEFAULT '1'
 );
 
+create table Proveedor(
+idProveedor int AUTO_INCREMENT primary key,
+RazSoc_Prov varchar(250) not null,
+tipoPersona_Prov char(1) not null,
+ruc_Prov char(11) not null,
+direccion_Prov varchar(150) not null,
+telefono_Prov char(9) not null,
+email_Prov varchar(50),
+fec_reg_Prov TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+estado_Prov char(1) not null DEFAULT '1'
+);
+
 create table Producto(
 idProducto int AUTO_INCREMENT PRIMARY KEY,
 desc_Prod varchar(100) NOT NULL,

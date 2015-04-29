@@ -396,6 +396,7 @@
     <script src="<?php echo Yii::app()->theme->baseUrl;?>/dist/js/utilesModal.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->theme->baseUrl;?>/dist/js/producto/producto.js" type="text/javascript">
     </script><script src="<?php echo Yii::app()->theme->baseUrl;?>/dist/js/cliente/cliente.js" type="text/javascript"></script>
+    </script><script src="<?php echo Yii::app()->theme->baseUrl;?>/dist/js/proveedor/proveedor.js" type="text/javascript"></script>
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!--script src="< ?php echo Yii::app()->theme->baseUrl;?>/dist/js/pages/dashboard.js" type="text/javascript"></script-->

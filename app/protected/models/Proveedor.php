@@ -5,19 +5,18 @@
  *
  * The followings are the available columns in table 'proveedor':
  * @property integer $idProveedor
- * @property string $RasonSocial
- * @property string $tipoPersona
- * @property string $RUC
- * @property string $direccion
- * @property string $telefono
- * @property string $email
- * @property string $stado
- *
- * The followings are the available model relations:
- * @property Producto[] $productos
+ * @property string $RazSoc_Prov
+ * @property string $tipoPersona_Prov
+ * @property string $ruc_Prov
+ * @property string $direccion_Prov
+ * @property string $telefono_Prov
+ * @property string $email_Prov
+ * @property string $fec_reg_Prov
+ * @property string $estado_Prov
  */
 class Proveedor extends CActiveRecord
 {
+
 
 		/**
 	* Se listan las personas por catalogo
@@ -38,49 +37,46 @@ public function obtenerProveedorxId($idProveedor){
 		return $this->findAllBySql($sql);
 	}
 
-	public function actualizarProveedor($idProveedor,$RasonSocial,$tipoPersona,$RUC,$direccion,$telefono,$email,$stado){
-		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+	public function actualizarProveedor($idProveedor,$RazSoc_Prov,$tipoPersona_Prov,$ruc_Prov,$direccion_Prov,$telefono_Prov,$email_Prov,$estado_Prov){
+		$resultado = array('valorupd'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$proveedor = Proveedor::model()->findByPk($idProveedor);
 
-		if(count($proveedor)>0){
+		
 			
-			$proveedor->RasonSocial=$RasonSocial;
-			$proveedor->tipoPersona=$tipoPersona;
-			$proveedor->RUC=$RUC;
-			$proveedor->direccion=$direccion;
-			$proveedor->telefono=$telefono;
-			$proveedor->email=$email;
-			$proveedor->stado=$stado;
+				$proveedor->RazSoc_Prov=$RazSoc_Prov;
+				$proveedor->tipoPersona_Prov=$tipoPersona_Prov;
+				$proveedor->ruc_Prov=$ruc_Prov;
+				$proveedor->direccion_Prov=$direccion_Prov;
+				$proveedor->telefono_Prov=$telefono_Prov;
+				$proveedor->email_Prov=$email_Prov;
+				$proveedor->estado_Prov=$estado_Prov;
 		
 			if(!$proveedor->save()){
-				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+				$resultado = array('valorupd'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
-		}else{
-			$resultado = array('data'=>0, 'message'=>'No se pudo encontrar a la persona seleccionada. ');
-		}
+		
 
 		return $resultado;
 	}
 
-	public function agregarProveedor($RasonSocial,$tipoPersona,$RUC,$direccion,$telefono,$email,$stado){
-		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+	public function agregarProveedor($RazSoc_Prov,$tipoPersona_Prov,$ruc_Prov,$direccion_Prov,$telefono_Prov,$email_Prov){
+		$resultado = array('valor'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$proveedor=new Proveedor;
 
 		
 	
 		
-			$proveedor->RasonSocial=$RasonSocial;
-			$proveedor->tipoPersona=$tipoPersona;
-			$proveedor->RUC=$RUC;
-			$proveedor->direccion=$direccion;
-			$proveedor->telefono=$telefono;
-			$proveedor->email=$email;
-			$proveedor->stado=$stado;
+			$proveedor->RazSoc_Prov=$RazSoc_Prov;
+			$proveedor->tipoPersona_Prov=$tipoPersona_Prov;
+			$proveedor->ruc_Prov=$ruc_Prov;
+			$proveedor->direccion_Prov=$direccion_Prov;
+			$proveedor->telefono_Prov=$telefono_Prov;
+			$proveedor->email_Prov=$email_Prov;
 		
 			if(!$proveedor->save()){
-				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+				$resultado = array('valor'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
 		
 
@@ -88,23 +84,22 @@ public function obtenerProveedorxId($idProveedor){
 	}
 
 	
-	public function actualizarEstadoProveedor($idProveedor, $stado){
+	public function actualizarEstadoProveedor($idProveedor, $estado_Prov){
 		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$proveedor = Proveedor::model()->findByPk($idProveedor);
 
-		if(count($proveedor)>0){
-			$proveedor->stado=$stado;
+		
+			$proveedor->estado_Prov=$estado_Prov;
 		
 			if(!$proveedor->save()){
 				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
-		}else{
-			$resultado = array('data'=>0, 'message'=>'No se pudo encontrar a la persona seleccionada. ');
-		}
+		
 
 		return $resultado;
 	}
+
 
 	/**
 	 * @return string the associated database table name
@@ -122,15 +117,16 @@ public function obtenerProveedorxId($idProveedor){
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RasonSocial', 'length', 'max'=>200),
-			array('tipoPersona, stado', 'length', 'max'=>1),
-			array('RUC', 'length', 'max'=>11),
-			array('direccion', 'length', 'max'=>100),
-			array('telefono', 'length', 'max'=>9),
-			array('email', 'length', 'max'=>255),
+			array('RazSoc_Prov, tipoPersona_Prov, ruc_Prov, direccion_Prov, telefono_Prov', 'required'),
+			array('RazSoc_Prov', 'length', 'max'=>250),
+			array('tipoPersona_Prov, estado_Prov', 'length', 'max'=>1),
+			array('ruc_Prov', 'length', 'max'=>11),
+			array('direccion_Prov', 'length', 'max'=>150),
+			array('telefono_Prov', 'length', 'max'=>9),
+			array('email_Prov', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idProveedor, RasonSocial, tipoPersona, RUC, direccion, telefono, email, stado', 'safe', 'on'=>'search'),
+			array('idProveedor, RazSoc_Prov, tipoPersona_Prov, ruc_Prov, direccion_Prov, telefono_Prov, email_Prov, fec_reg_Prov, estado_Prov', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -142,7 +138,6 @@ public function obtenerProveedorxId($idProveedor){
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'productos' => array(self::HAS_MANY, 'Producto', 'idProveedor'),
 		);
 	}
 
@@ -153,13 +148,14 @@ public function obtenerProveedorxId($idProveedor){
 	{
 		return array(
 			'idProveedor' => 'Id Proveedor',
-			'RasonSocial' => 'Rason Social',
-			'tipoPersona' => 'Tipo Persona',
-			'RUC' => 'Ruc',
-			'direccion' => 'Direccion',
-			'telefono' => 'Telefono',
-			'email' => 'Email',
-			'stado' => 'Stado',
+			'RazSoc_Prov' => 'Raz Soc Prov',
+			'tipoPersona_Prov' => 'Tipo Persona Prov',
+			'ruc_Prov' => 'Ruc Prov',
+			'direccion_Prov' => 'Direccion Prov',
+			'telefono_Prov' => 'Telefono Prov',
+			'email_Prov' => 'Email Prov',
+			'fec_reg_Prov' => 'Fec Reg Prov',
+			'estado_Prov' => 'Estado Prov',
 		);
 	}
 
@@ -182,13 +178,14 @@ public function obtenerProveedorxId($idProveedor){
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idProveedor',$this->idProveedor);
-		$criteria->compare('RasonSocial',$this->RasonSocial,true);
-		$criteria->compare('tipoPersona',$this->tipoPersona,true);
-		$criteria->compare('RUC',$this->RUC,true);
-		$criteria->compare('direccion',$this->direccion,true);
-		$criteria->compare('telefono',$this->telefono,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('stado',$this->stado,true);
+		$criteria->compare('RazSoc_Prov',$this->RazSoc_Prov,true);
+		$criteria->compare('tipoPersona_Prov',$this->tipoPersona_Prov,true);
+		$criteria->compare('ruc_Prov',$this->ruc_Prov,true);
+		$criteria->compare('direccion_Prov',$this->direccion_Prov,true);
+		$criteria->compare('telefono_Prov',$this->telefono_Prov,true);
+		$criteria->compare('email_Prov',$this->email_Prov,true);
+		$criteria->compare('fec_reg_Prov',$this->fec_reg_Prov,true);
+		$criteria->compare('estado_Prov',$this->estado_Prov,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
