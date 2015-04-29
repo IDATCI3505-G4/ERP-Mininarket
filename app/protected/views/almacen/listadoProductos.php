@@ -130,6 +130,49 @@ $this->breadcrumbs=array(
 </div>
 
 <!-- Modal -->
+<div class="modal fade" id="ModalnewMarca" tabindex="-1" role="dialog" aria-labelledby="myModalRegistrarMarca" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Cabecera -->
+      <div class="modal-header">
+        <button type="button" class="close close_modal" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only ">Close</span></button>
+        <h4 class="modal-title" id="modalTitle">Agregar Marca</h4>
+      </div>
+      <!-- /Cabecera -->
+ <div class="alert alert-dismissable " id="message_save_Marca" style="display: none;">
+    
+</div>
+<div class="modal-body">
+  <form id="newMarcaForm" method="post"  class="form-horizontal"   target="" >                  
+   
+    <div class="form-group">
+      <label class="col-lg-4 control-label">Nombre de la Categoria:</label>
+      <div class="col-lg-7">
+        <input type="text" class="form-control" id="add_nomMarca"   name="add_nomMarca" placeholder="Nombre de la Marca"  >
+      </div>
+    </div>   
+ 
+   
+
+    <div class="form-group">
+      <div class="col-md-5 col-md-offset-3">
+        <button class="btn btn-primary" id="btnRegistrarMarca">Registrar</button>
+        <button   id="cerrarmodal" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
+        >Cerrar</button>
+      </div>
+    </div>
+  </form><!-- /# usuarioForm -->
+
+</div><!-- /.modal-body -->
+
+     
+
+    </div><!-- /. modal-content -->
+  </div><!-- /. modal-dialog-->
+
+</div>
+
+<!-- /#myModalEditarEmpleado --><!-- Modal -->
 <div class="modal fade" id="ModalnewCategoria" tabindex="-1" role="dialog" aria-labelledby="myModalRegistrarCategoria" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -216,8 +259,11 @@ $this->breadcrumbs=array(
     
     <div class="form-group has-succes">
       <label class="col-lg-4 control-label">Marca:</label>
-      <div class="col-lg-7">
+      <div class="col-lg-5">
         <select class="form-control Lista_Marcas" name="add_Lista_Marcas" id="add_Lista_Marcas"></select>
+      </div>
+      <div class="col-lg-1">
+        <button type="button" class="btn btn-primary" id="new_Marca" data-target="#ModalnewMarca"><i class="fa fa-plus"></i></button>
       </div>
     </div>
     <div class="form-group">

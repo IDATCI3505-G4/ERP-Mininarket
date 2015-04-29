@@ -44,7 +44,7 @@ idCategoria int AUTO_INCREMENT PRIMARY KEY,
 nomCategoria varchar(50) NOT NULL
 );
 
-<<<<<<< HEAD
+
 /* Categorias*/
 select * from producto
 insert into Categoria(nomCategoria) values('Helados');

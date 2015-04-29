@@ -1,3 +1,58 @@
+$("#new_Marca").click(function(event) {
+	$('#ModalnewMarca').modal('show');
+	$('#ModalnewMarca').css('z-index', '10000');
+});
+
+ $("button#btnRegistrarMarca").click(function(e){
+
+
+var nomMarca =$("#add_nomMarca").val();
+
+        $.ajax({
+            type: "POST",
+      url: "index.php?r=almacen/AjaxAgregarMarca",
+      data: {nomMarca:nomMarca},
+            success: function(resp){
+            	data = resp.output;
+            	console.log(data);
+            	if(data.valor==1){
+				 $("#message_save_Marca").show('easy', function() {
+				 		$(this).addClass('alert-success');
+				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+				});				 
+				 setTimeout(function() {
+				 	$("#newMarcaForm").reset();
+
+				 	$("#ModalnewMarca").modal('hide');
+				 	 $.post("index.php?r=almacen/AjaxListarMarcas", function(Marcas) {
+                var $comboMarcas= $(".Lista_Marcas");
+
+                $comboMarcas.empty();
+              	$comboMarcas.append("<option value=''>Seleccione Marca</option>");
+                $.each(Marcas, function(index, marca) {
+                    // agregamos opciones al combo
+                    $comboMarcas.append("<option value="+marca.idMarca+">" + marca.nomMarca + "</option>");
+                });
+            }, 'json');
+				 }, 1000);
+            	}
+            	if(data.valor==0){
+            		 $("#message_save_Marca").show('easy', function() {
+            		 	$(this).removeClass('alert-success');
+            		 	$(this).addClass('alert-danger');
+				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+				});
+            	}
+            },
+      error: function(){
+        alert("failure");
+        },
+            });
+    
+e.preventDefault();
+
+  });
+
 $("#new_Category").click(function(event) {
 	$('#ModalnewCategoria').modal('show');
 	$('#ModalnewCategoria').css('z-index', '10000');

@@ -12,6 +12,22 @@
  */
 class Marca extends CActiveRecord
 {
+	public function agregarMarca($nomMarca){
+		$resultado = array('valor'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+
+		$marca=new Marca;	
+	
+		
+			$marca->nomMarca=$nomMarca;
+			
+
+			if(!$marca->save()){
+				$resultado = array('valor'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+			}
+		
+
+		return $resultado;
+	}
 	/**
 	 * @return string the associated database table name
 	 */
