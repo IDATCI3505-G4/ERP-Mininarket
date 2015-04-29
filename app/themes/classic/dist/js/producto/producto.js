@@ -1,3 +1,60 @@
+$("#new_Category").click(function(event) {
+	$('#ModalnewCategoria').modal('show');
+	$('#ModalnewCategoria').css('z-index', '10000');
+});
+
+ $("button#btnRegistrarCategoria").click(function(e){
+
+
+var nomCategoria =$("#add_nomCategoria").val();
+
+        $.ajax({
+            type: "POST",
+      url: "index.php?r=almacen/AjaxAgregarCategoria",
+      data: {nomCategoria:nomCategoria},
+            success: function(resp){
+            	data = resp.output;
+            	console.log(data);
+            	if(data.valor==1){
+				 $("#message_save_Categoria").show('easy', function() {
+				 		$(this).addClass('alert-success');
+				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+				});				 
+				 setTimeout(function() {
+				 	$("#newCategoiraForm").reset();
+
+				 	$("#ModalnewCategoria").modal('hide');
+				 	 $.post("index.php?r=almacen/AjaxListarCategorias", function(categorias) {
+                var $comboCategorias= $(".Lista_Caterorias");
+
+                $comboCategorias.empty();
+              	$comboCategorias.append("<option value=''>Seleccione Categoría</option>");
+                $.each(categorias, function(index, categoria) {
+                    // agregamos opciones al combo
+                    $comboCategorias.append("<option value="+categoria.idCategoria+">" + categoria.nomCategoria + "</option>");
+                });
+            }, 'json');
+				 }, 1000);
+            	}
+            	if(data.valor==0){
+            		 $("#message_save_categoria").show('easy', function() {
+            		 	$(this).removeClass('alert-success');
+            		 	$(this).addClass('alert-danger');
+				            	$(this).html('<button type="button" class="close" data-dismiss="alert" >x</button><strong>'+data.message+'</strong>')
+				});
+            	}
+            },
+      error: function(){
+        alert("failure");
+        },
+            });
+    
+e.preventDefault();
+
+  });
+
+
+
 // ====================================================================================
 // METODO PARA REACTIVAR UN PROVEEDOR
 // ====================================================================================

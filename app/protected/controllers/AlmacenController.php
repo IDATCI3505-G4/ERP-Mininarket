@@ -92,6 +92,16 @@ public function actionAjaxListarCategorias(){
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
 	}
+	public function actionAjaxAgregarCategoria(){
+
+		$nomCategoria =$_POST['nomCategoria'];
+	
+	
+		$respuesta = Categoria::model()->agregarCategoria($nomCategoria);
+
+		header('Content-Type: application/json; charset="UTF-8"');
+    	echo CJSON::encode(array('output'=>$respuesta));
+	}
 
 	public function actionAjaxEliminarProducto(){
 

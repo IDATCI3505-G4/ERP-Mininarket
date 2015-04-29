@@ -20,17 +20,17 @@ class ComprasController extends Controller{
 
 		public function actionAjaxActualizarProveedor(){
 
-		$idProveedor = $_POST['idProveedor'];
-		$RasonSocial = $_POST['RasonSocial'];
-		$tipoPersona = $_POST['tipoPersona'];
-		$RUC = $_POST['RUC'];
-		$direccion = $_POST['direccion'];
-		$telefono = $_POST['telefono'];
-		$email = $_POST['email'];
-		$stado = $_POST['stado'];
+		$idProveedor=$_POST['idProveedor'];
+		$RazSoc_Prov=$_POST['RazSoc_Prov'];
+		$tipoPersona_Prov=$_POST['tipoPersona_Prov'];
+		$ruc_Prov=$_POST['ruc_Prov'];
+		$direccion_Prov=$_POST['direccion_Prov'];
+		$telefono_Prov=$_POST['telefono_Prov'];
+		$email_Prov=$_POST['email_Prov'];
+		$estado_Prov=$_POST['estado_Prov'];
 
 
-		$respuesta = Proveedor::model() -> actualizarProveedor($idProveedor,$RasonSocial,$tipoPersona,$RUC,$direccion,$telefono,$email,$stado);
+		$respuesta = Proveedor::model() -> actualizarProveedor($idProveedor,$RazSoc_Prov,$tipoPersona_Prov,$ruc_Prov,$direccion_Prov,$telefono_Prov,$email_Prov,$estado_Prov);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
@@ -41,16 +41,16 @@ class ComprasController extends Controller{
 
 		
 
-		$RasonSocial = $_POST['RasonSocial'];
-		$tipoPersona = $_POST['tipoPersona'];
-		$RUC = $_POST['RUC'];
-		$direccion = $_POST['direccion'];
-		$telefono = $_POST['telefono'];
-		$email = $_POST['email'];
-		$stado = $_POST['stado'];
+		$RazSoc_Prov=$_POST['RazSoc_Prov'];
+		$tipoPersona_Prov=$_POST['tipoPersona_Prov'];
+		$ruc_Prov=$_POST['ruc_Prov'];
+		$direccion_Prov=$_POST['direccion_Prov'];
+		$telefono_Prov=$_POST['telefono_Prov'];
+		$email_Prov=$_POST['email_Prov'];
 
 
-		$respuesta = Proveedor::model() -> agregarProveedor($RasonSocial,$tipoPersona,$RUC,$direccion,$telefono,$email,$stado);
+
+		$respuesta = Proveedor::model() -> agregarProveedor($RazSoc_Prov,$tipoPersona_Prov,$ruc_Prov,$direccion_Prov,$telefono_Prov,$email_Prov);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
@@ -58,9 +58,9 @@ class ComprasController extends Controller{
 
 	public function actionAjaxActualizarEstadoProveedor(){
 		$idProveedor = $_POST['idProveedor'];
-		$stado = $_POST['stado'];
+		$estado_Prov = $_POST['estado_Prov'];
 
-		$respuesta = Proveedor::model()->actualizarEstadoProveedor($idProveedor, $stado);
+		$respuesta = Proveedor::model()->actualizarEstadoProveedor($idProveedor, $estado_Prov);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));

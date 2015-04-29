@@ -19,19 +19,16 @@ class VentasController extends Controller{
 	}
 
 	public function actionAjaxActualizarCliente(){
+		$idCliente=$_POST['idCliente'];
+		$RazSoc_Cli=$_POST['RazSoc_Cli'];
+		$tipoPersona_Cli=$_POST['tipoPersona_Cli'];
+		$ruc_Cli=$_POST['ruc_Cli'];
+		$direccion_Cli=$_POST['direccion_Cli'];
+		$telefono_Cli=$_POST['telefono_Cli'];
+		$email_Cli=$_POST['email_Cli'];
+		$estado_Cli=$_POST['estado_Cli'];
 
-		$idCliente = $_POST['idCliente'];
-		$RazonSocial = $_POST['RazonSocial'];
-		$tipoPersona = $_POST['tipoPersona'];
-		$ruc = $_POST['ruc'];
-		$direccion = $_POST['direccion'];
-		$telefono = $_POST['telefono'];
-		$email = $_POST['email'];
-		$fechaInsc = $_POST['fechaInsc'];
-		$stado = $_POST['stado'];
-
-
-		$respuesta = Cliente::model() -> actualizarCliente($idCliente,$RazonSocial,$tipoPersona,$ruc,$direccion,$telefono,$email,$fechaInsc,$stado);
+		$respuesta = Cliente::model() -> actualizarCliente($idCliente,$RazSoc_Cli,$tipoPersona_Cli,$ruc_Cli,$direccion_Cli,$telefono_Cli,$email_Cli,$estado_Cli);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
@@ -41,17 +38,15 @@ public function actionAjaxAgregarCliente(){
 
 
 	
-		$RazonSocial = $_POST['RazonSocial'];
-		$tipoPersona = $_POST['tipoPersona'];
-		$ruc = $_POST['ruc'];
-		$direccion = $_POST['direccion'];
-		$telefono = $_POST['telefono'];
-		$email = $_POST['email'];
-		$fechaInsc = $_POST['fechaInsc'];
-		$stado = $_POST['stado'];
+$RazSoc_Cli=$_POST['RazSoc_Cli'];
+$tipoPersona_Cli=$_POST['tipoPersona_Cli'];
+$ruc_Cli=$_POST['ruc_Cli'];
+$direccion_Cli=$_POST['direccion_Cli'];
+$telefono_Cli=$_POST['telefono_Cli'];
+$email_Cli=$_POST['email_Cli'];
 
 
-		$respuesta = Cliente::model() -> agregarCliente($RazonSocial,$tipoPersona,$ruc,$direccion,$telefono,$email,$fechaInsc,$stado);
+		$respuesta = Cliente::model() -> agregarCliente($RazSoc_Cli,$tipoPersona_Cli,$ruc_Cli,$direccion_Cli,$telefono_Cli,$email_Cli);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
@@ -59,9 +54,9 @@ public function actionAjaxAgregarCliente(){
 
 public function actionAjaxActualizarEstadocliente(){
 		$idCliente = $_POST['idCliente'];
-		$stado = $_POST['stado'];
+		$estado_Cli = $_POST['estado_Cli'];
 
-		$respuesta = cliente::model()->actualizarEstadoCliente($idCliente, $stado);
+		$respuesta = Cliente::model()->actualizarEstadoCliente($idCliente, $estado_Cli);
 
 		header('Content-Type: application/json; charset="UTF-8"');
     	echo CJSON::encode(array('output'=>$respuesta));
