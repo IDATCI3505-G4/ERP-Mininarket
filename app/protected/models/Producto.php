@@ -20,8 +20,7 @@
  */
 class Producto extends CActiveRecord
 {
-
-	/**
+/**
 	* Se listan las personas por catalogo
 	**/
 	/*public function listadoProductos(){
@@ -135,6 +134,9 @@ public function obtenerProductoxId($idProducto){
 	/**
 	 * @return string the associated database table name
 	 */
+
+
+
 	public function tableName()
 	{
 		return 'producto';
@@ -152,10 +154,10 @@ public function obtenerProductoxId($idProducto){
 			array('stock, idMarca, idCategoria', 'numerical', 'integerOnly'=>true),
 			array('desc_Prod', 'length', 'max'=>100),
 			array('presentacion', 'length', 'max'=>20),
-			array('tipoProd', 'length', 'max'=>1),
+			array('tipoProd, estadoProd', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idProducto, desc_Prod, presentacion, tipoProd, stock, idMarca, idCategoria', 'safe', 'on'=>'search'),
+			array('idProducto, desc_Prod, presentacion, tipoProd, stock, idMarca, idCategoria, fecha_creacion, estadoProd', 'safe', 'on'=>'search'),
 		);
 	}
 

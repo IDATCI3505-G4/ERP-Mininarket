@@ -429,7 +429,7 @@ $(document).on("click", ".editarProducto", function(e) {
 				$("#upd_stock").attr('value',data.stock);
 				$("#upd_tipoProd option[value='"+data.tipoProd+"']").attr('selected','selected');
 				$("#upd_Lista_Marcas option[value='"+data.idMarca+"']").attr('selected','selected');
-				$(".Lista_Caterorias_upd option[value='"+data.idCategoria+"']").attr('selected','selected');
+				$("#upd_Lista_Caterorias option[value='"+data.idCategoria+"']").attr('selected','selected');
 				if(data.estadoProd==1){
 					$("#upd_stado").prop('checked', true);
 					$('#upd_txtEstado').text('en Catálogo');
@@ -458,6 +458,15 @@ var idMarca =$("#upd_Lista_Marcas").val();
 var idCategoria =$("#upd_Lista_Caterorias").val();
 var idProducto =$("#upd_cod_Prod").val();
 var upd_stado;
+
+if ($('#upd_desc_Prod').val().trim()==='' || $('#upd_presentacion').val().trim()==='' ||$('#upd_stock').val().trim()===''|| $('#upd_tipoProd').val().trim()==='' || $('#upd_Lista_Caterorias').val().trim()==='' || $('#upd_Lista_Marcas').val().trim()==='') {
+      $('#upd_desc_Prod').no_select();    
+      $('#upd_presentacion').no_select();
+      $('#upd_stock').no_select(); 
+      $('#upd_tipoProd').no_select(); 
+      $('#upd_Lista_Caterorias').no_select(); 
+      $('#upd_Lista_Marcas').no_select();    
+    }else{
 if($("#upd_stado").is(':checked')) {
 			estadoProd=1;
 		} else {
@@ -504,7 +513,7 @@ if($("#upd_stado").is(':checked')) {
         alert("failure");
         },
             });
-   
+   }/*FIN else*/
 e.preventDefault();
 
   });
