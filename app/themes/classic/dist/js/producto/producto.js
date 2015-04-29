@@ -272,6 +272,7 @@ jQuery.fn.no_select = function () {
     }
 
 }
+
 jQuery.fn.no_text = function () {   
  
    
@@ -309,18 +310,13 @@ $('#upd_Lista_Marcas').no_selecteds();
 
   $("button#btnRegistrarProducto").click(function(e){
 
-  	if ($('#add_desc_Prod').val().trim()==='') {
-  		$('#add_desc_Prod').addClass('no_selected');
-  	}else if($('#add_presentacion').val().trim()===''){
-  		$('#add_presentacion').addClass('no_selected');
-  	}else if($('#add_stock').val().trim()==='' ){
-  		$('#add_stock').addClass('no_selected');
-  	}else if($('#add_tipoProd').val().trim()===''){
-$('#add_tipoProd').addClass('no_selected');
-  	}else if($('#add_Lista_Caterorias').val().trim()===''){
-$('#add_Lista_Caterorias').addClass('no_selected');
-  	}else if($('#add_Lista_Marcas').val().trim()===''){
-$('#add_Lista_Marcas').addClass('no_selected');
+  	if ($('#add_desc_Prod').val().trim()==='' || $('#add_presentacion').val().trim()==='' ||$('#add_stock').val().trim()===''|| $('#add_tipoProd').val().trim()==='' || $('#add_Lista_Caterorias').val().trim()==='' || $('#add_Lista_Marcas').val().trim()==='') {
+  		$('#add_desc_Prod').no_select();  	
+  		$('#add_presentacion').no_select();
+      $('#add_stock').no_select(); 
+      $('#add_tipoProd').no_select(); 
+      $('#add_Lista_Caterorias').no_select(); 
+      $('#add_Lista_Marcas').no_select();    
   	}else{
 
 var desc_Prod =$("#add_desc_Prod").val();

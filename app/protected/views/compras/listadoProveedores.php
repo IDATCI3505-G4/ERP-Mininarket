@@ -324,7 +324,7 @@ $this->breadcrumbs=array(
 
     <div class="form-group">
       <div class="col-md-5 col-md-offset-3">
-        <button class="btn btn-primary" id="btnActualizarProveedor"><i class="fa fa-floppy-o"></i> Registrar</button>
+        <button class="btn btn-primary" id="btnActualizarProveedor"><i class="fa fa-floppy-o"></i> Actualizar</button>
         <button   id="cerrarmodal" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
         ><i class="fa fa-times"></i> Cerrar</button>
       </div>

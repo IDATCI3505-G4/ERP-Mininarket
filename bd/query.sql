@@ -37,13 +37,15 @@ estadoProd char(1) not null DEFAULT '1'
 
 create table Marca(
 idMarca int AUTO_INCREMENT PRIMARY KEY,
-nomMarca varchar(100) NOT NULL
+nomMarca varchar(100) unique not null
 );
 create table Categoria(
 idCategoria int AUTO_INCREMENT PRIMARY KEY,
-nomCategoria varchar(50) NOT NULL
+nomCategoria varchar(50) unique not null
 );
-
+drop table Producto;
+drop table Marca;
+drop table Categoria;
 
 /* Categorias*/
 select * from producto
@@ -56,6 +58,8 @@ insert into Categoria(nomCategoria) values('Snacks');
 insert into Categoria(nomCategoria) values('Dulces');
 insert into Categoria(nomCategoria) values('Frutas');
 insert into Categoria(nomCategoria) values('Fideos');
+
+delete from categoria
 admin053jawkga
 /*Marcas*/
 
@@ -70,12 +74,14 @@ insert into Marca(nomMarca) values('Soda');
 insert into Marca(nomMarca) values('Inka Kola');
 insert into Marca(nomMarca) values('Lavaghi');
 
-
+select * from Marca
 alter table Producto add CONSTRAINT fk_producto_categoria FOREIGN KEY (idCategoria) references Categoria(idCategoria);
 alter table Producto add CONSTRAINT fk_producto_marca FOREIGN KEY (idMarca) references Marca(idMarca);
 
+select * from Marca where nomMarca='Gloria'
+select * from Categoria where nomCategoria='Bebidas'
 
-
+select * from Marca where nomMarca=Gloria
 create table Cliente(
 idCliente int AUTO_INCREMENT Primary key,
 RazonSocial varchar(150),
