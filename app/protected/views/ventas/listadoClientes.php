@@ -18,7 +18,8 @@ $this->breadcrumbs=array(
     	<h3 class='box-title'><i class="fa fa-users"></i> Listado de Clientes</h3>
     </div>
     <div class='box-body'>
-      <button type="button" class="btn btn-default" id="AgregarCliente"> <i class="fa fa-plus "></i> Agregar Clientes</button>
+     <button type="button" class="btn btn-default" id="btnNewCliente" data-toggle="modal" data-target="#ModalnewCliente" ><i class="fa fa-plus "></i> Agregar Producto</button>
+      
     	<?php
                   $this->widget('zii.widgets.grid.CGridView', array(
                     'id'=>'tablareporte',
@@ -72,7 +73,7 @@ $this->breadcrumbs=array(
                             'editar' => array(
                                 'label'=>'Editar Cliente',
                                 'imageUrl'=>Yii::app()->request->baseUrl.'/images/iconos/edit_16x16.png',
-                                'options'=>array('class'=>'editarCliente','id'=>'editarCliente'),
+                                'options'=>array('class'=>'editarCliente','id'=>'editarCliente','data-target'=>'#ModalActualizarCliente'),
                                 'url'=>'$data->idCliente',
                                 //'visible'=>'$data->ide_persona > 0',
                                 //'click'=>'function(){alert("Going down!");}',
@@ -121,3 +122,176 @@ $this->breadcrumbs=array(
                    ?>
 	</div>
 </div>
+
+<!-- MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="ModalnewCliente" tabindex="-1" role="dialog" aria-labelledby="myModalRegistrarcliente" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Cabecera -->
+      <div class="modal-header">
+        <button type="button" class="close close_modal" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only ">Close</span></button>
+        <h4 class="modal-title" id="modalTitle">Nuevo Cliente</h4>
+      </div>
+      <!-- /Cabecera -->
+ <div class="alert alert-dismissable " id="message_save_Cliente" style="display: none;">
+    
+</div>
+<div class="modal-body">
+<form id="newProductoForm" method="post"  class="form-horizontal"   target="" >                  
+<div class="form-group">
+<label class="col-md-4 control-label" for="RazSoc_Cli">Nombre o Razón Social:</label>
+<div class="col-lg-7">
+<input id="add_RazSoc_Cli" name="add_RazSoc_Cli" type="text" placeholder="" class="form-control input-md" value="">
+        
+      </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="tipoPersona">Tipo de Persona:</label>
+<div class="col-md-7">
+<select class="form-control" name="add_tipoPersona_Cli" id="add_tipoPersona_Cli">
+          
+          <option value="">Seleccione un tipo de Persona</option>
+          <option value="0">Natural</option>
+          <option value="1" >Juridica</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="RUC">RUC:</label>
+<div class="col-md-7">
+<input id="add_ruc_Cli" name="add_ruc_Cli" type="text" placeholder="RUC" class="form-control input-md" value="">
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="direccion">direccion:</label>
+<div class="col-md-7">
+<input id="add_direccion_Cli" name="add_direccion_Cli" type="text" placeholder="direccion" class="form-control input-md" value="">
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="telefono_Cli">telefono:</label>
+<div class="col-md-7">
+<input id="add_telefono_Cli" name="add_telefono_Cli" type="text" placeholder="telefono" class="form-control input-md" value="">
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="email">email:</label>
+<div class="col-md-7">
+<input id="add_email_Cli" name="add_email_Cli" type="text" placeholder="email" class="form-control input-md" value="">
+</div>
+</div>
+  
+   
+
+    <div class="form-group">
+      <div class="col-md-5 col-md-offset-3">
+        <button class="btn btn-primary" id="btnRegistrarCliente">Registrar</button>
+        <button   id="cerrarmodal" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
+        >Cerrar</button>
+      </div>
+    </div>
+  </form><!-- /# usuarioForm -->
+
+</div><!-- /.modal-body -->
+
+     
+
+    </div><!-- /. modal-content -->
+  </div><!-- /. modal-dialog-->
+
+</div><!-- /#myModalEditarEmpleado -->
+
+
+
+
+
+<!-- ACTUALIZAR CLIENTE -->
+<!-- MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="ModalActualizarCliente" tabindex="-1" role="dialog" aria-labelledby="myModalActualizarcliente" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Cabecera -->
+      <div class="modal-header">
+        <button type="button" class="close close_modal" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only ">Close</span></button>
+        <h4 class="modal-title" id="modalTitle">Actualizar Cliente</h4>
+      </div>
+      <!-- /Cabecera -->
+ <div class="alert alert-dismissable " id="message_upd_Cliente" style="display: none;">
+    
+</div>
+<div class="modal-body">
+<form id="newProductoForm" method="post"  class="form-horizontal"   target="" > 
+ <input type="hidden" class="form-control" id="upd_idCliente"   name="upd_idCliente"  >                 
+<div class="form-group">
+<label class="col-md-4 control-label" for="RazSoc_Cli">Nombre o Razón Social:</label>
+<div class="col-lg-7">
+<input id="upd_RazSoc_Cli" name="upd_RazSoc_Cli" type="text" placeholder="" class="form-control input-md" value="">
+        
+      </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="tipoPersona">Tipo de Persona:</label>
+<div class="col-md-7">
+<select class="form-control" name="upd_tipoPersona_Cli" id="upd_tipoPersona_Cli">
+          
+          <option value="">Seleccione un tipo de Persona</option>
+          <option value="0">Natural</option>
+          <option value="1" >Juridica</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="RUC">RUC:</label>
+<div class="col-md-7">
+<input id="upd_ruc_Cli" name="upd_ruc_Cli" type="text" placeholder="RUC" class="form-control input-md" value="">
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="direccion">direccion:</label>
+<div class="col-md-7">
+<input id="upd_direccion_Cli" name="upd_direccion_Cli" type="text" placeholder="direccion" class="form-control input-md" value="">
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="telefono_Cli">telefono:</label>
+<div class="col-md-7">
+<input id="upd_telefono_Cli" name="upd_telefono_Cli" type="text" placeholder="telefono" class="form-control input-md" value="">
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="email">email:</label>
+<div class="col-md-7">
+<input id="upd_email_Cli" name="upd_email_Cli" type="text" placeholder="email" class="form-control input-md" value="">
+</div>
+</div>
+<div class="form-group">
+<label class="col-lg-4 control-label">Estado:</label>
+<div class="col-lg-7">
+<div class="checkbox">
+<label>
+<input type="checkbox" name="upd_estado_Cli" id="upd_estado_Cli"><span id="upd_txtestado_Cli"></span>
+</label>
+</div>
+</div>
+</div>   
+   
+
+    <div class="form-group">
+      <div class="col-md-5 col-md-offset-3">
+        <button class="btn btn-primary" id="btnActualizarCliente">Registrar</button>
+        <button   id="cerrarmodal" class="close_modal btn btn-danger"    data-dismiss="modal" rel="tooltip" title="Cerrar"
+        >Cerrar</button>
+      </div>
+    </div>
+  </form><!-- /# usuarioForm -->
+
+</div><!-- /.modal-body -->
+
+     
+
+    </div><!-- /. modal-content -->
+  </div><!-- /. modal-dialog-->
+
+</div><!-- /#myModalEditarEmpleado -->

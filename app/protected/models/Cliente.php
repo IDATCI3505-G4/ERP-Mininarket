@@ -36,49 +36,44 @@ public function obtenerClientexId($idCliente){
 
 		return $this->findAllBySql($sql);
 	}
-public function actualizarCliente($idCliente,$RazonSocial,$tipoPersona,$ruc,$direccion,$telefono,$email,$fechaInsc,$stado){
-		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+public function actualizarCliente($idCliente,$RazSoc_Cli,$tipoPersona_Cli,$ruc_Cli,$direccion_Cli,$telefono_Cli,$email_Cli,$estado_Cli){
+		$resultado = array('valorupd'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$cliente = Cliente::model()->findByPk($idCliente);
 
-		if(count($cliente)>0){
-			
-			$cliente->RazonSocial=$RazonSocial;
-			$cliente->tipoPersona=$tipoPersona;
-			$cliente->ruc=$ruc;
-			$cliente->direccion=$direccion;
-			$cliente->telefono=$telefono;
-			$cliente->email=$email;
-			$cliente->fechaInsc=$fechaInsc;
-			$cliente->stado=$stado;
 		
+			
+
+				$cliente->RazSoc_Cli=$RazSoc_Cli;
+				$cliente->tipoPersona_Cli=$tipoPersona_Cli;
+				$cliente->ruc_Cli=$ruc_Cli;
+				$cliente->direccion_Cli=$direccion_Cli;
+				$cliente->telefono_Cli=$telefono_Cli;
+				$cliente->email_Cli=$email_Cli;
+				$cliente->estado_Cli=$estado_Cli;
 			if(!$cliente->save()){
-				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+				$resultado = array('valorupd'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
-		}else{
-			$resultado = array('data'=>0, 'message'=>'No se pudo encontrar a la persona seleccionada. ');
-		}
+		
 
 		return $resultado;
 	}
-	public function agregarCliente($RazonSocial,$tipoPersona,$ruc,$direccion,$telefono,$email,$fechaInsc,$stado){
-		$resultado = array('data'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
+	public function agregarCliente($RazSoc_Cli,$tipoPersona_Cli,$ruc_Cli,$direccion_Cli,$telefono_Cli,$email_Cli){
+		$resultado = array('valor'=>1,'message'=>'Su solicitud ha sido procesada correctamente.');
 
 		$cliente=new Cliente;
 
 		
-	
+		$cliente->RazSoc_Cli=$RazSoc_Cli;
+		$cliente->tipoPersona_Cli=$tipoPersona_Cli;
+		$cliente->ruc_Cli=$ruc_Cli;
+		$cliente->direccion_Cli=$direccion_Cli;
+		$cliente->telefono_Cli=$telefono_Cli;
+		$cliente->email_Cli=$email_Cli;
 		
-			$cliente->RazonSocial=$RazonSocial;
-			$cliente->tipoPersona=$tipoPersona;
-			$cliente->ruc=$ruc;
-			$cliente->direccion=$direccion;
-			$cliente->telefono=$telefono;
-			$cliente->email=$email;
-			$cliente->fechaInsc=$fechaInsc;
-			$cliente->stado=$stado;
+		
 			if(!$cliente->save()){
-				$resultado = array('data'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
+				$resultado = array('valor'=>0, 'message'=>'No hemos podido realizar su solicitud, intentelo nuevamente');
 			}
 		
 
@@ -116,7 +111,7 @@ public function actualizarEstadoCliente($idCliente, $estado_Cli){
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RazSoc_Cli, tipoPersona_Cli, ruc_Cli, direccion_Cli, telefono_Cli, fec_reg_Cli', 'required'),
+			array('RazSoc_Cli, tipoPersona_Cli, ruc_Cli, direccion_Cli, telefono_Cli, ', 'required'),
 			array('RazSoc_Cli', 'length', 'max'=>250),
 			array('tipoPersona_Cli, estado_Cli', 'length', 'max'=>1),
 			array('ruc_Cli', 'length', 'max'=>11),
