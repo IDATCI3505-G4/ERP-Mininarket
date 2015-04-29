@@ -115,6 +115,45 @@ jQuery.fn.no_select = function () {
     }
 
 }
+jQuery.fn.no_selecteds = function () {
+
+   $(this).change(function () {
+    if ($(this).val().trim() !== '') {
+       $(this).removeClass('no_selected');
+    }
+    if ($(this).val().trim() === '') {
+       $(this).addClass('no_selected');
+    }
+ });
+}
+jQuery.fn.no_text = function () {   
+ 
+   
+    $(this).blur(function(e) {
+
+	if($(this).val().trim() === ''){
+		$(this).addClass('no_selected');
+	}else{
+		$(this).removeClass('no_selected');
+	}
+	
+});
+
+}
+
+			$('#add_RazSoc_Cli').no_text();  	
+			$('#add_tipoPersona_Cli').no_text();
+			$('#add_ruc_Cli').no_text(); 
+			$('#add_direccion_Cli').no_text(); 
+			$('#add_telefono_Cli').no_text(); 
+			$('#add_email_Cli').no_text();
+			$('#upd_RazSoc_Cli').no_text();  	
+			$('#upd_tipoPersona_Cli').no_text();
+			$('#upd_ruc_Cli').no_text(); 
+			$('#upd_direccion_Cli').no_text(); 
+			$('#upd_telefono_Cli').no_text(); 
+			$('#upd_email_Cli').no_text();    
+
 
   $("button#btnRegistrarCliente").click(function(e){
 

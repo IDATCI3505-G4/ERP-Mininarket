@@ -35,6 +35,33 @@
 
 	
 });
+jQuery.fn.no_text = function () {   
+ 
+   
+    $(this).blur(function(e) {
+
+	if($(this).val().trim() === ''){
+		$(this).addClass('no_selected');
+	}else{
+		$(this).removeClass('no_selected');
+	}
+	
+});
+
+}
+$('#add_RazSoc_Prov').no_text();  	
+$('#add_tipoPersona_Prov').no_text();
+$('#add_ruc_Prov').no_text(); 
+$('#add_direccion_Prov').no_text(); 
+$('#add_telefono_Prov').no_text(); 
+$('#add_email_Prov').no_text();
+$('#upd_RazSoc_Prov').no_text();  	
+$('#upd_tipoPersona_Prov').no_text();
+$('#upd_ruc_Prov').no_text(); 
+$('#upd_direccion_Prov').no_text(); 
+$('#upd_telefono_Prov').no_text(); 
+$('#upd_email_Prov').no_text();     
+
 
 $("button#btnActualizarProveedor").click(function(e){
 
@@ -46,6 +73,15 @@ var direccion_Prov =$("#upd_direccion_Prov").val();
 var telefono_Prov =$("#upd_telefono_Prov").val();
 var email_Prov =$("#upd_email_Prov").val();
 var estado_Prov;
+if ($('#upd_RazSoc_Prov').val().trim()==='' || $('#upd_tipoPersona_Prov').val().trim()==='' ||$('#upd_ruc_Prov').val().trim()===''|| $('#upd_direccion_Prov').val().trim()==='' || $('#upd_telefono_Prov').val().trim()==='' || $('#upd_email_Prov').val().trim()==='') {
+  		
+  		$('#upd_RazSoc_Prov').no_select();  	
+  		$('#upd_tipoPersona_Prov').no_select();
+      $('#upd_ruc_Prov').no_select(); 
+      $('#upd_direccion_Prov').no_select(); 
+      $('#upd_telefono_Prov').no_select(); 
+      $('#upd_email_Prov').no_select();    
+  	}else{
 if($("#upd_estado_Prov").is(':checked')) {
 			estado_Prov=1;
 		} else {
@@ -92,11 +128,18 @@ if($("#upd_estado_Prov").is(':checked')) {
         alert("failure");
         },
             });
-   
+   }//END ELSE
 e.preventDefault();
 
   });
+jQuery.fn.no_select = function () {   
+ 
+    if ($(this).val().trim() === '') {
+       $(this).addClass('no_selected');
+    }
 
+}	
+ 
 
 
   $("button#btnRegistrarProveedor").click(function(e){
@@ -109,7 +152,15 @@ var direccion_Prov =$("#add_direccion_Prov").val();
 var telefono_Prov =$("#add_telefono_Prov").val();
 var email_Prov =$("#add_email_Prov").val();
 
-
+if ($('#add_RazSoc_Prov').val().trim()==='' || $('#add_tipoPersona_Prov').val().trim()==='' ||$('#add_ruc_Prov').val().trim()===''|| $('#add_direccion_Prov').val().trim()==='' || $('#add_telefono_Prov').val().trim()==='' || $('#add_email_Prov').val().trim()==='') {
+  		
+  		$('#add_RazSoc_Prov').no_select();  	
+  		$('#add_tipoPersona_Prov').no_select();
+      $('#add_ruc_Prov').no_select(); 
+      $('#add_direccion_Prov').no_select(); 
+      $('#add_telefono_Prov').no_select(); 
+      $('#add_email_Prov').no_select();    
+  	}else{
         $.ajax({
             type: "POST",
       url: "index.php?r=compras/AjaxAgregarProveedor",
@@ -148,7 +199,8 @@ var email_Prov =$("#add_email_Prov").val();
         },
             });
     
-
+}
+// end ELSE
 
   });
 
